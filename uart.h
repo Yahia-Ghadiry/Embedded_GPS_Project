@@ -21,6 +21,9 @@
 #define UART0_RXE_PIN 0x100
 #define UART0_UARTEN_PIN 0x1
 
+
+#define UART0_FR_TXFE 0x20 //Anas
+
 #define UART0_ALT_PA01 0x03
 #define UART0_PTL_PA01 0x00000011
 #define UART0_PTL_PA01_MASK 0x000000FF
@@ -29,4 +32,5 @@
 
 void UART_vInit(void);
 
+void UART0_Write(uint8_t data); //Anas
 #endif

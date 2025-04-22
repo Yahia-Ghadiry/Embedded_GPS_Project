@@ -39,3 +39,10 @@ void UART_vInit(void)
     CLR(GPIO_PORTA_AMSEL_R, GPIO_PORTA_PIN01);
 	
 }
+
+	void UART0_Write(uint8_t data){
+			while (UART0_FR_R & UART_FR_TXFF);        //Anas
+			UART0_DR_R = data;      
+	}
+		
+		
