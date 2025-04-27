@@ -12,8 +12,9 @@ GPIO_PORTC_DATA_R |=SW;
 void init_LCD(void){
 GPIO_Init_PortB();
 GPIO_Init_PortC_LCD();
-	data_LCD(clear_char);
-	control_LCD(clear_control);
+data_LCD(clear_char);
+control_LCD(clear_control);
+	
 }
 
 void clear(void){}
