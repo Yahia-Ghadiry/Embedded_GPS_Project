@@ -16,11 +16,19 @@ systickFunctions.h(11): warning:  #1-D: last line of file ends without a newline
   #endif // SYSTICKSIMPLE_H
 systicFunctions.c: 1 warning, 0 errors
 compiling LCD.c...
-LCD.h(7): warning:  #1-D: last line of file ends without a newline
+LCD.h(11): warning:  #1-D: last line of file ends without a newline
   void clear(void);
-LCD.c(2): warning:  #1-D: last line of file ends without a newline
+LCD.c(13): warning:  #223-D: function "GPIO_Init_PortB" declared implicitly
+  GPIO_Init_PortB();
+LCD.c(14): warning:  #223-D: function "GPIO_Init_PortC_LCD" declared implicitly
+  GPIO_Init_PortC_LCD();
+LCD.c(20): warning:  #1-D: last line of file ends without a newline
   void clear(void){}
-LCD.c: 2 warnings, 0 errors
+LCD.c: 4 warnings, 0 errors
 linking...
-Program Size: Code=528 RO-data=636 RW-data=0 ZI-data=608  
-".\project.axf" - 0 Error(s), 3 Warning(s).
+.\project.axf: Error: L6218E: Undefined symbol GPIO_Init_PortB (referred from lcd.o).
+.\project.axf: Error: L6218E: Undefined symbol GPIO_Init_PortC_LCD (referred from lcd.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 2 error messages.
+".\project.axf" - 2 Error(s), 5 Warning(s).
+Target not created
