@@ -4,4 +4,6 @@
 #include <stdint.h>
 #endif
 
+void init_LCD(void);
+
 void clear(void);
