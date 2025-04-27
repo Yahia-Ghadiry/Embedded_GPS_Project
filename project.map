@@ -118,9 +118,9 @@ Removing Unused input sections from the image.
 
     Removing uart.o(.text), (188 bytes).
     Removing systicfunctions.o(.text), (66 bytes).
-    Removing lcd.o(.text), (2 bytes).
+    Removing lcd.o(.text), (4 bytes).
 
-3 unused section(s) (total 256 bytes) removed from the image.
+3 unused section(s) (total 258 bytes) removed from the image.
 
 ==============================================================================
 
