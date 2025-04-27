@@ -1,19 +1,23 @@
 Dependencies for Project 'project', Target 'Target 1': (DO NOT MODIFY !)
-F (.\startup_TM4C123.s)(0x680E47E7)(--cpu Cortex-M4.fp --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123--list .\startup_tm4c123.lst --xref -o .\startup_tm4c123.o --depend .\startup_tm4c123.d)
-F (.\main.c)(0x680E47E7)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\main.o --omf_browse .\main.crf --depend .\main.d)
+F (.\startup_TM4C123.s)(0x680E7A6D)(--cpu Cortex-M4.fp --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123--list .\startup_tm4c123.lst --xref -o .\startup_tm4c123.o --depend .\startup_tm4c123.d)
+F (.\main.c)(0x680E5809)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\main.o --omf_browse .\main.crf --depend .\main.d)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
-I (uart.h)(0x680E47E7)
-F (.\uart.h)(0x680E47E7)()
-F (.\uart.c)(0x680E47E7)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\uart.o --omf_browse .\uart.crf --depend .\uart.d)
-I (uart.h)(0x680E47E7)
+I (uart.h)(0x680E7A6D)
+F (.\uart.h)(0x680E7A6D)()
+F (.\uart.c)(0x680E7A6D)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\uart.o --omf_browse .\uart.crf --depend .\uart.d)
+I (uart.h)(0x680E7A6D)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
-I (TM4C123.h)(0x680E47E7)
-I (bit_utilies.h)(0x680E47E7)
-F (.\systicFunctions.c)(0x680E4E64)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\systicfunctions.o --omf_browse .\systicfunctions.crf --depend .\systicfunctions.d)
+I (TM4C123.h)(0x680E7A6D)
+I (bit_utilies.h)(0x680E5809)
+F (.\GPIO.c)(0x680E7FDC)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\gpio.o --omf_browse .\gpio.crf --depend .\gpio.d)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
-I (tm4c123gh6pm.h)(0x680E4D1B)
-I (systickFunctions.h)(0x680E4D1B)
-F (.\LCD.c)(0x680E59C8)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\lcd.o --omf_browse .\lcd.crf --depend .\lcd.d)
-I (LCD.h)(0x680E59C8)
+I (tm4c123.h)(0x680E7A6D)
+I (GPIO.h)(0x680E7B72)
+F (.\LCD.c)(0x680E7B6A)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\lcd.o --omf_browse .\lcd.crf --depend .\lcd.d)
+I (LCD.h)(0x680E7B6A)
 I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
-I (tm4c123gh6pm.h)(0x680E4D1B)
+I (tm4c123gh6pm.h)(0x680E7A6D)
+F (.\systicFunctions.c)(0x680E7A6D)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\TI\TM4C123-DTM4C123GH6PM-o .\systicfunctions.o --omf_browse .\systicfunctions.crf --depend .\systicfunctions.d)
+I (C:\Keil\ARM\ARMCC\include\stdint.h)(0x51C819B4)
+I (tm4c123gh6pm.h)(0x680E7A6D)
+I (systickFunctions.h)(0x680E7A6D)
