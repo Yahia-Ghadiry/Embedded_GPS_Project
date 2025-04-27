@@ -1,7 +1,6 @@
 #include <stdint.h>
 #include "tm4c123.h"
 #include "GPIO.h"
-#include "elements.h"
 
 
 //======== Port A =================
