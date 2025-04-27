@@ -7,5 +7,5 @@
 void SystemInit(void);
 void SysTick_Init(void);
 void SysTick_DelayMs(uint32_t delay);
-
+void SysTick_DelayUs(uint32_t delay);
 #endif // SYSTICKSIMPLE_H
