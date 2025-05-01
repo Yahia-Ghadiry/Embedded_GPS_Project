@@ -6,33 +6,60 @@ void data_LCD(char c){
 GPIO_PORTB_DATA_R = c;
 }
 
-void control_LCD(char SW){
-GPIO_PORTC_DATA_R |=SW;
+void set_control_LCD(void){
+GPIO_PORTD_DATA_R |=0x02;
+}
+void set_E(void){
+GPIO_PORTD_DATA_R |=(1<<2);
+}
+void clear_control_LCD(void){
+GPIO_PORTD_DATA_R &=(~0x3);
+}
+void clear_E(void){
+GPIO_PORTD_DATA_R &=~(1<<2);
 }
 
 void init_LCD(void){
 GPIO_Init_PortB();
-GPIO_Init_PortC_LCD();
+GPIO_Init_PortD_LCD();
+	set_E();
 data_LCD(init_lcd_functions);
-control_LCD(clear_control);
-	SysTick_DelayMs(3);
+clear_control_LCD();
+	DelayUs(1);
+	clear_E();
+	DelayMs(3);
+	set_E();
 	data_LCD(display_control);
-control_LCD(clear_control);
-	SysTick_DelayMs(3);
+clear_control_LCD();
+	DelayUs(1);
+	clear_E();
+	DelayMs(3);
+		set_E();
 		data_LCD(home);
-control_LCD(clear_control);
-	SysTick_DelayMs(3);
+clear_control_LCD();
+		DelayUs(1);
+	clear_E();
+DelayMs(3);
+	set_E();
 }
 void clear(void){
 	data_LCD(clear_char);
-control_LCD(clear_control);
-	SysTick_DelayMs(3);
+clear_control_LCD();
+	set_E();
+  DelayUs(1);
+	clear_E();
+	DelayMs(3);
+	set_E();
 			data_LCD(home);
-control_LCD(clear_control);
-	SysTick_DelayMs(3);
+clear_control_LCD();
+		set_E();
+  DelayUs(1);
+	clear_E();
+	DelayMs(3);
+	set_E();
 }
 void shift_curser(void){
 	data_LCD(shift);
-control_LCD(clear_control);
-	SysTick_DelayUs(60);
+clear_control_LCD();
+	DelayUs(60);
 }

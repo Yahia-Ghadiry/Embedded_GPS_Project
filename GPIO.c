@@ -35,17 +35,17 @@ void GPIO_Init_PortB(void){
 	GPIO_PORTB_PUR_R = 0x00;
 	GPIO_PORTB_DEN_R |= 0xFF;
 }
-//======== Port C =================
-void GPIO_Init_PortC_LCD(void){
-	SYSCTL_RCGCGPIO_R |= 0x03;
-	while((SYSCTL_PRGPIO_R&0x03) == 0){}
+//======== Port D =================
+void GPIO_Init_PortD_LCD(void){
+	SYSCTL_RCGCGPIO_R |= 0x08;
+	while((SYSCTL_PRGPIO_R&0x08) == 0){}
 	
-	GPIO_PORTC_LOCK_R = 0x4C4F434B;
-	GPIO_PORTC_CR_R |= 0xFF;
+	GPIO_PORTD_LOCK_R = 0x4C4F434B;
+	GPIO_PORTD_CR_R |= 0xFF;
 	
-	GPIO_PORTC_DIR_R |= 0x03;
-	GPIO_PORTC_PUR_R = 0x00;
-	GPIO_PORTC_DEN_R |= 0x03;
+	GPIO_PORTD_DIR_R |= 0x07;
+	GPIO_PORTD_PUR_R = 0x00;
+	GPIO_PORTD_DEN_R |= 0x07;
 }
 //======== Port F =================
 void GPIO_Init_PortF(void){

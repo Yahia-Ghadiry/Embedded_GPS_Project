@@ -11,5 +11,8 @@
 #define	shift 0x14				
 void init_LCD(void);
 void data_LCD(char c);
-void control_LCD(char SW);
+void set_control_LCD(void);
+void clear_control_LCD(void);
+void set_E(void);
+void clear_E(void);
 void clear(void);

@@ -37,8 +37,8 @@ void GPIO_Init_PortF(void);
 //---------------------------------
 void GPIO_Init_PortA(void);
 
-//======== Port C_LCD =================
-void GPIO_Init_PortC_LCD(void);
+//======== Port D_LCD =================
+void GPIO_Init_PortD_LCD(void);
 
 
 void GPIO_LED_RED_ON(void);

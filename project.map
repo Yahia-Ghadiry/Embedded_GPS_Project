@@ -14,7 +14,7 @@ Section Cross References
     startup_tm4c123.o(.text) refers to startup_tm4c123.o(HEAP) for Heap_Mem
     startup_tm4c123.o(.text) refers to startup_tm4c123.o(STACK) for Stack_Mem
     lcd.o(.text) refers to gpio.o(.text) for GPIO_Init_PortB
-    lcd.o(.text) refers to systicfunctions.o(.text) for SysTick_DelayMs
+    lcd.o(.text) refers to systicfunctions.o(.text) for DelayUs
     __main.o(!!!main) refers to rtentry.o(.ARM.Collect$$rtentry$$00000000) for __rt_entry
     rtentry.o(.ARM.Collect$$rtentry$$00000000) refers (Special) to rtentry2.o(.ARM.Collect$$rtentry$$0000000A) for __rt_entry_li
     rtentry.o(.ARM.Collect$$rtentry$$00000000) refers (Special) to rtentry2.o(.ARM.Collect$$rtentry$$0000000D) for __rt_entry_main
@@ -118,11 +118,11 @@ Section Cross References
 
 Removing Unused input sections from the image.
 
-    Removing lcd.o(.text), (164 bytes).
+    Removing lcd.o(.text), (280 bytes).
     Removing gpio.o(.text), (1208 bytes).
     Removing systicfunctions.o(.text), (104 bytes).
 
-3 unused section(s) (total 1476 bytes) removed from the image.
+3 unused section(s) (total 1592 bytes) removed from the image.
 
 ==============================================================================
 

@@ -21,7 +21,7 @@ void SysTick_Init(void)
 }
 
 // Simple delay function (time in milliseconds)
-void SysTick_DelayMs(uint32_t delay)
+void DelayMs(uint32_t delay)
 {
     // Assuming system clock = 16 MHz
     uint32_t i;
@@ -35,7 +35,7 @@ void SysTick_DelayMs(uint32_t delay)
         }
     }
 }
-void SysTick_DelayUs(uint32_t delay)
+void DelayUs(uint32_t delay)
 {
     uint32_t i;
     for(i = 0; i < delay; i++)
