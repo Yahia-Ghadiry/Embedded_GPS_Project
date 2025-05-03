@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Sat May 03 01:17:56 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Sat May 03 14:36:22 2025
 <BR><P>
 <H3>Maximum Stack Usage =         24 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-main &rArr; position_curser
+main &rArr; init_LCD &rArr; clear
 <P>
 <H3>
 Mutually Recursive functions
@@ -1102,121 +1102,123 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_tm4c123.o(RESET)
 </UL>
-<P><STRONG><a name="[76]"></a>main</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = main &rArr; position_curser
+<P><STRONG><a name="[76]"></a>main</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, main.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = main &rArr; init_LCD &rArr; clear
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;position_curser
-<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_String
+<BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_LCD
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_char
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Init
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[82]"></a>data_LCD</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, lcd.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_char
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shift_curser
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_LCD
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;position_curser
+<P><STRONG><a name="[7f]"></a>data_LCD</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, lcd.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;position_curser
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shift_curser
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_LCD
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_char
 </UL>
 
-<P><STRONG><a name="[8a]"></a>set_control_LCD</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, lcd.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_char
+<P><STRONG><a name="[89]"></a>set_control_LCD</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, lcd.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_char
 </UL>
 
 <P><STRONG><a name="[81]"></a>set_E</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, lcd.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_char
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shift_curser
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_LCD
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;position_curser
+<BR><BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;position_curser
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shift_curser
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_LCD
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_char
 </UL>
 
-<P><STRONG><a name="[83]"></a>clear_control_LCD</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, lcd.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shift_curser
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_LCD
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;position_curser
+<P><STRONG><a name="[80]"></a>clear_control_LCD</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, lcd.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;position_curser
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shift_curser
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_LCD
 </UL>
 
-<P><STRONG><a name="[85]"></a>clear_E</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, lcd.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_char
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shift_curser
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_LCD
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;position_curser
+<P><STRONG><a name="[83]"></a>clear_E</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, lcd.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;position_curser
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shift_curser
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_LCD
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_char
 </UL>
 
-<P><STRONG><a name="[7e]"></a>init_LCD</STRONG> (Thumb, 136 bytes, Stack size 8 bytes, lcd.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init_PortD_LCD
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init_PortB
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayUs
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayMs
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_E
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_control_LCD
+<P><STRONG><a name="[7e]"></a>clear</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, lcd.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = clear
+</UL>
+<BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayUs
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayMs
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_E
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_control_LCD
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_E
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;data_LCD
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;data_LCD
+</UL>
+<BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_LCD
 </UL>
 
-<P><STRONG><a name="[87]"></a>clear</STRONG> (Thumb, 72 bytes, Stack size 8 bytes, lcd.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayUs
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayMs
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_E
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_control_LCD
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_E
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;data_LCD
+<P><STRONG><a name="[7c]"></a>init_LCD</STRONG> (Thumb, 116 bytes, Stack size 8 bytes, lcd.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = init_LCD &rArr; clear
 </UL>
-
-<P><STRONG><a name="[88]"></a>shift_curser</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, lcd.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayUs
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_E
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_control_LCD
+<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init_PortD_LCD
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init_PortB
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayUs
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayMs
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_E
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_control_LCD
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_E
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;data_LCD
-</UL>
-
-<P><STRONG><a name="[7c]"></a>position_curser</STRONG> (Thumb, 92 bytes, Stack size 16 bytes, lcd.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = position_curser
-</UL>
-<BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayUs
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_E
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_control_LCD
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_E
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;data_LCD
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;data_LCD
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[89]"></a>display_char</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, lcd.o(.text))
+<P><STRONG><a name="[87]"></a>shift_curser</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, lcd.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayUs
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_E
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_control_LCD
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_E
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;data_LCD
+</UL>
+
+<P><STRONG><a name="[88]"></a>position_curser</STRONG> (Thumb, 92 bytes, Stack size 16 bytes, lcd.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayUs
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_E
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_control_LCD
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_E
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;data_LCD
+</UL>
+
+<P><STRONG><a name="[7d]"></a>display_char</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, lcd.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = display_char
 </UL>
-<BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayUs
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_E
+<BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayUs
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_E
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_E
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_control_LCD
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;data_LCD
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_control_LCD
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;data_LCD
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_String
+<BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_String
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[7d]"></a>display_String</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, lcd.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = display_String &rArr; display_char
-</UL>
-<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_char
-</UL>
-<BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<P><STRONG><a name="[8a]"></a>display_String</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, lcd.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_char
 </UL>
 
 <P><STRONG><a name="[8e]"></a>GPIO_Init_PortA</STRONG> (Thumb, 142 bytes, Stack size 0 bytes, gpio.o(.text), UNUSED)
 <BR><BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init_A_B_F
 </UL>
 
-<P><STRONG><a name="[7f]"></a>GPIO_Init_PortB</STRONG> (Thumb, 86 bytes, Stack size 0 bytes, gpio.o(.text), UNUSED)
+<P><STRONG><a name="[85]"></a>GPIO_Init_PortB</STRONG> (Thumb, 102 bytes, Stack size 0 bytes, gpio.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init_A_B_F
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_LCD
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_LCD
 </UL>
 
-<P><STRONG><a name="[80]"></a>GPIO_Init_PortD_LCD</STRONG> (Thumb, 86 bytes, Stack size 0 bytes, gpio.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_LCD
+<P><STRONG><a name="[86]"></a>GPIO_Init_PortD_LCD</STRONG> (Thumb, 118 bytes, Stack size 0 bytes, gpio.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_LCD
 </UL>
 
 <P><STRONG><a name="[8c]"></a>GPIO_LED_ALL_OFF</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gpio.o(.text), UNUSED)
@@ -1232,7 +1234,7 @@ Global Symbols
 <P><STRONG><a name="[8d]"></a>GPIO_Init_A_B_F</STRONG> (Thumb, 16 bytes, Stack size 4 bytes, gpio.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init_PortF
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init_PortA
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init_PortB
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init_PortB
 </UL>
 
 <P><STRONG><a name="[96]"></a>GPIO_LED_RED_ON</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gpio.o(.text), UNUSED)
@@ -1257,7 +1259,7 @@ Global Symbols
 
 <P><STRONG><a name="[a0]"></a>GPIO_DATA_RESET</STRONG> (Thumb, 256 bytes, Stack size 0 bytes, gpio.o(.text), UNUSED)
 
-<P><STRONG><a name="[a1]"></a>GPIO_DIR_SET</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, gpio.o(.text), UNUSED)
+<P><STRONG><a name="[a1]"></a>GPIO_DIR_SET</STRONG> (Thumb, 60 bytes, Stack size 0 bytes, gpio.o(.text), UNUSED)
 
 <P><STRONG><a name="[a2]"></a>delay</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, gpio.o(.text), UNUSED)
 
@@ -1267,17 +1269,17 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[86]"></a>DelayMs</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, systicfunctions.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_LCD
+<P><STRONG><a name="[84]"></a>DelayMs</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, systicfunctions.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_LCD
 </UL>
 
-<P><STRONG><a name="[84]"></a>DelayUs</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, systicfunctions.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_char
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shift_curser
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_LCD
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;position_curser
+<P><STRONG><a name="[82]"></a>DelayUs</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, systicfunctions.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;position_curser
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shift_curser
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_LCD
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;display_char
 </UL>
 
 <P><STRONG><a name="[7a]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, init.o(.text))

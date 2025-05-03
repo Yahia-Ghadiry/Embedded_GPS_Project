@@ -21,30 +21,34 @@ GPIO_PORTD_DATA_R &=~(1<<2);
 }
 
 void init_LCD(void){
+	//////////Power on////////////
 GPIO_Init_PortB();
 GPIO_Init_PortD_LCD();
-	set_E();
-				data_LCD(0x6);
-clear_control_LCD();
-		DelayUs(1);
-	clear_E();
-DelayMs(3);
-	set_E();
+	DelayMs(20);
+	
+	//////////Function set///////////
+		set_E();
 data_LCD(init_lcd_functions);
 clear_control_LCD();
-	DelayUs(1);
+	DelayUs(10);
 	clear_E();
 	DelayMs(3);
-	set_E();
+	//////////Display on curser off///////////
+	
+		set_E();
 	data_LCD(display_control);
 clear_control_LCD();
-	DelayUs(1);
+	DelayUs(10);
 	clear_E();
 	DelayMs(3);
+	//////////clear///////////
+clear();
+	//////////Entery Mode///////////
+
 		set_E();
-		data_LCD(home);
+		data_LCD(entry);
 clear_control_LCD();
-		DelayUs(1);
+		DelayUs(10);
 	clear_E();
 DelayMs(3);
 	set_E();
@@ -54,17 +58,11 @@ void clear(void){
 	data_LCD(clear_char);
 clear_control_LCD();
 	set_E();
-  DelayUs(1);
+  DelayUs(10);
 	clear_E();
 	DelayMs(3);
 	set_E();
-			data_LCD(home);
-clear_control_LCD();
-		set_E();
-  DelayUs(1);
-	clear_E();
-	DelayMs(3);
-	set_E();
+
 }
 void shift_curser(void){
 	data_LCD(shift);
@@ -95,7 +93,7 @@ void display_char(char c){
 			set_E();
     data_LCD(c);
 	set_control_LCD();
-		DelayUs(1);
+		DelayUs(10);
 		clear_E();
 		DelayUs(60);
 		set_E();

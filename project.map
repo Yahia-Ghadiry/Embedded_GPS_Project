@@ -8,9 +8,9 @@ Section Cross References
     startup_tm4c123.o(RESET) refers to startup_tm4c123.o(.text) for Reset_Handler
     startup_tm4c123.o(.text) refers to entry.o(.ARM.Collect$$$$00000000) for __main
     main.o(.text) refers to systicfunctions.o(.text) for SysTick_Init
-    main.o(.text) refers to lcd.o(.text) for position_curser
-    lcd.o(.text) refers to gpio.o(.text) for GPIO_Init_PortB
+    main.o(.text) refers to lcd.o(.text) for init_LCD
     lcd.o(.text) refers to systicfunctions.o(.text) for DelayUs
+    lcd.o(.text) refers to gpio.o(.text) for GPIO_Init_PortB
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry10a.o(.ARM.Collect$$$$0000000D) for __rt_final_cpp
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry11a.o(.ARM.Collect$$$$0000000F) for __rt_final_exit
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry7b.o(.ARM.Collect$$$$00000008) for _main_clock
@@ -79,13 +79,13 @@ Image Symbol Table
     .text                                    0x00000280   Section      244  startup_tm4c123.o(.text)
     $v0                                      0x00000280   Number         0  startup_tm4c123.o(.text)
     .text                                    0x00000374   Section        0  main.o(.text)
-    .text                                    0x00000394   Section        0  lcd.o(.text)
-    .text                                    0x00000574   Section        0  gpio.o(.text)
-    .text                                    0x00000a2c   Section        0  systicfunctions.o(.text)
-    .text                                    0x00000a94   Section       36  init.o(.text)
-    i.__scatterload_copy                     0x00000ab8   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x00000ac6   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x00000ac8   Section       14  handlers.o(i.__scatterload_zeroinit)
+    .text                                    0x000003c0   Section        0  lcd.o(.text)
+    .text                                    0x00000568   Section        0  gpio.o(.text)
+    .text                                    0x00000a5c   Section        0  systicfunctions.o(.text)
+    .text                                    0x00000ac4   Section       36  init.o(.text)
+    i.__scatterload_copy                     0x00000ae8   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x00000af6   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x00000af8   Section       14  handlers.o(i.__scatterload_zeroinit)
     STACK                                    0x20000000   Section      512  startup_tm4c123.o(STACK)
 
     Global Symbols
@@ -229,48 +229,48 @@ Image Symbol Table
     PWM1_2_Handler                           0x00000369   Thumb Code     2  startup_tm4c123.o(.text)
     PWM1_3_Handler                           0x0000036b   Thumb Code     2  startup_tm4c123.o(.text)
     PWM1_FAULT_Handler                       0x0000036d   Thumb Code     2  startup_tm4c123.o(.text)
-    main                                     0x00000375   Thumb Code    24  main.o(.text)
-    data_LCD                                 0x00000395   Thumb Code     6  lcd.o(.text)
-    set_control_LCD                          0x0000039b   Thumb Code    16  lcd.o(.text)
-    set_E                                    0x000003ab   Thumb Code    16  lcd.o(.text)
-    clear_control_LCD                        0x000003bb   Thumb Code    16  lcd.o(.text)
-    clear_E                                  0x000003cb   Thumb Code    16  lcd.o(.text)
-    init_LCD                                 0x000003db   Thumb Code   136  lcd.o(.text)
-    clear                                    0x00000463   Thumb Code    72  lcd.o(.text)
-    shift_curser                             0x000004ab   Thumb Code    34  lcd.o(.text)
-    position_curser                          0x000004cd   Thumb Code    92  lcd.o(.text)
-    display_char                             0x00000529   Thumb Code    40  lcd.o(.text)
-    display_String                           0x00000551   Thumb Code    22  lcd.o(.text)
-    GPIO_Init_PortA                          0x00000575   Thumb Code   142  gpio.o(.text)
-    GPIO_Init_PortB                          0x00000603   Thumb Code    86  gpio.o(.text)
-    GPIO_Init_PortD_LCD                      0x00000659   Thumb Code    86  gpio.o(.text)
-    GPIO_LED_ALL_OFF                         0x000006af   Thumb Code    16  gpio.o(.text)
-    GPIO_Init_PortF                          0x000006bf   Thumb Code   104  gpio.o(.text)
-    GPIO_Init_A_B_F                          0x00000727   Thumb Code    16  gpio.o(.text)
-    GPIO_LED_RED_ON                          0x00000737   Thumb Code    16  gpio.o(.text)
-    GPIO_LED_RED_OFF                         0x00000747   Thumb Code    10  gpio.o(.text)
-    GPIO_LED_BLUE_ON                         0x00000751   Thumb Code    16  gpio.o(.text)
-    GPIO_LED_BLUE_OFF                        0x00000761   Thumb Code    16  gpio.o(.text)
-    GPIO_LED_GREEN_ON                        0x00000771   Thumb Code    16  gpio.o(.text)
-    GPIO_LED_GREEN_OFF                       0x00000781   Thumb Code    16  gpio.o(.text)
-    GPIO_LED_ALL_ON                          0x00000791   Thumb Code    16  gpio.o(.text)
-    GPIO_DATA_WRITE                          0x000007a1   Thumb Code    56  gpio.o(.text)
-    GPIO_DATA_READ                           0x000007d9   Thumb Code    72  gpio.o(.text)
-    GPIO_DATA_SET                            0x00000821   Thumb Code   164  gpio.o(.text)
-    GPIO_DATA_RESET                          0x000008c5   Thumb Code   256  gpio.o(.text)
-    GPIO_DIR_SET                             0x000009c5   Thumb Code    56  gpio.o(.text)
-    delay                                    0x000009fd   Thumb Code    22  gpio.o(.text)
-    SystemInit                               0x00000a2d   Thumb Code     2  systicfunctions.o(.text)
-    SysTick_Init                             0x00000a2f   Thumb Code    24  systicfunctions.o(.text)
-    DelayMs                                  0x00000a47   Thumb Code    40  systicfunctions.o(.text)
-    DelayUs                                  0x00000a6f   Thumb Code    38  systicfunctions.o(.text)
-    __scatterload                            0x00000a95   Thumb Code    28  init.o(.text)
-    __scatterload_rt2                        0x00000a95   Thumb Code     0  init.o(.text)
-    __scatterload_copy                       0x00000ab9   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x00000ac7   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x00000ac9   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    Region$$Table$$Base                      0x00000ad8   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00000ae8   Number         0  anon$$obj.o(Region$$Table)
+    main                                     0x00000375   Thumb Code    74  main.o(.text)
+    data_LCD                                 0x000003c1   Thumb Code     6  lcd.o(.text)
+    set_control_LCD                          0x000003c7   Thumb Code    16  lcd.o(.text)
+    set_E                                    0x000003d7   Thumb Code    16  lcd.o(.text)
+    clear_control_LCD                        0x000003e7   Thumb Code    16  lcd.o(.text)
+    clear_E                                  0x000003f7   Thumb Code    16  lcd.o(.text)
+    clear                                    0x00000407   Thumb Code    38  lcd.o(.text)
+    init_LCD                                 0x0000042d   Thumb Code   116  lcd.o(.text)
+    shift_curser                             0x000004a1   Thumb Code    34  lcd.o(.text)
+    position_curser                          0x000004c3   Thumb Code    92  lcd.o(.text)
+    display_char                             0x0000051f   Thumb Code    40  lcd.o(.text)
+    display_String                           0x00000547   Thumb Code    22  lcd.o(.text)
+    GPIO_Init_PortA                          0x00000569   Thumb Code   142  gpio.o(.text)
+    GPIO_Init_PortB                          0x000005f7   Thumb Code   102  gpio.o(.text)
+    GPIO_Init_PortD_LCD                      0x0000065d   Thumb Code   118  gpio.o(.text)
+    GPIO_LED_ALL_OFF                         0x000006d3   Thumb Code    16  gpio.o(.text)
+    GPIO_Init_PortF                          0x000006e3   Thumb Code   104  gpio.o(.text)
+    GPIO_Init_A_B_F                          0x0000074b   Thumb Code    16  gpio.o(.text)
+    GPIO_LED_RED_ON                          0x0000075b   Thumb Code    16  gpio.o(.text)
+    GPIO_LED_RED_OFF                         0x0000076b   Thumb Code    10  gpio.o(.text)
+    GPIO_LED_BLUE_ON                         0x00000775   Thumb Code    16  gpio.o(.text)
+    GPIO_LED_BLUE_OFF                        0x00000785   Thumb Code    16  gpio.o(.text)
+    GPIO_LED_GREEN_ON                        0x00000795   Thumb Code    16  gpio.o(.text)
+    GPIO_LED_GREEN_OFF                       0x000007a5   Thumb Code    16  gpio.o(.text)
+    GPIO_LED_ALL_ON                          0x000007b5   Thumb Code    16  gpio.o(.text)
+    GPIO_DATA_WRITE                          0x000007c5   Thumb Code    56  gpio.o(.text)
+    GPIO_DATA_READ                           0x000007fd   Thumb Code    72  gpio.o(.text)
+    GPIO_DATA_SET                            0x00000845   Thumb Code   164  gpio.o(.text)
+    GPIO_DATA_RESET                          0x000008e9   Thumb Code   256  gpio.o(.text)
+    GPIO_DIR_SET                             0x000009e9   Thumb Code    60  gpio.o(.text)
+    delay                                    0x00000a25   Thumb Code    22  gpio.o(.text)
+    SystemInit                               0x00000a5d   Thumb Code     2  systicfunctions.o(.text)
+    SysTick_Init                             0x00000a5f   Thumb Code    24  systicfunctions.o(.text)
+    DelayMs                                  0x00000a77   Thumb Code    40  systicfunctions.o(.text)
+    DelayUs                                  0x00000a9f   Thumb Code    38  systicfunctions.o(.text)
+    __scatterload                            0x00000ac5   Thumb Code    28  init.o(.text)
+    __scatterload_rt2                        0x00000ac5   Thumb Code     0  init.o(.text)
+    __scatterload_copy                       0x00000ae9   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x00000af7   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x00000af9   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    Region$$Table$$Base                      0x00000b08   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00000b18   Number         0  anon$$obj.o(Region$$Table)
     __initial_sp                             0x20000200   Data           0  startup_tm4c123.o(STACK)
 
 
@@ -281,9 +281,9 @@ Memory Map of the image
 
   Image Entry point : 0x00000281
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x00000ae8, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00000b18, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Base: 0x00000000, Size: 0x00000ae8, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Base: 0x00000000, Size: 0x00000b18, Max: 0xffffffff, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -298,16 +298,17 @@ Memory Map of the image
     0x0000027c   0x00000000   Code   RO           89    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
     0x0000027c   0x00000004   Code   RO           78    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
     0x00000280   0x000000f4   Code   RO            4  * .text               startup_tm4c123.o
-    0x00000374   0x00000020   Code   RO           10    .text               main.o
-    0x00000394   0x000001e0   Code   RO           38    .text               lcd.o
-    0x00000574   0x000004b8   Code   RO           50    .text               gpio.o
-    0x00000a2c   0x00000068   Code   RO           62    .text               systicfunctions.o
-    0x00000a94   0x00000024   Code   RO           91    .text               mc_w.l(init.o)
-    0x00000ab8   0x0000000e   Code   RO           95    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x00000ac6   0x00000002   Code   RO           96    i.__scatterload_null  mc_w.l(handlers.o)
-    0x00000ac8   0x0000000e   Code   RO           97    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x00000ad6   0x00000002   PAD
-    0x00000ad8   0x00000010   Data   RO           93    Region$$Table       anon$$obj.o
+    0x00000374   0x0000004a   Code   RO           10    .text               main.o
+    0x000003be   0x00000002   PAD
+    0x000003c0   0x000001a8   Code   RO           38    .text               lcd.o
+    0x00000568   0x000004f4   Code   RO           50    .text               gpio.o
+    0x00000a5c   0x00000068   Code   RO           62    .text               systicfunctions.o
+    0x00000ac4   0x00000024   Code   RO           91    .text               mc_w.l(init.o)
+    0x00000ae8   0x0000000e   Code   RO           95    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x00000af6   0x00000002   Code   RO           96    i.__scatterload_null  mc_w.l(handlers.o)
+    0x00000af8   0x0000000e   Code   RO           97    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x00000b06   0x00000002   PAD
+    0x00000b08   0x00000010   Data   RO           93    Region$$Table       anon$$obj.o
 
 
     Execution Region ER_RW (Base: 0x20000000, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
@@ -329,16 +330,16 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-      1208        144          0          0          0       3412   gpio.o
-       480         14          0          0          0       2091   lcd.o
-        32          8          0          0          0       4659   main.o
-       244          6        620          0        512       5388   startup_tm4c123.o
-       104          0          0          0          0       1050   systicfunctions.o
+      1268        152          0          0          0       3456   gpio.o
+       424         12          0          0          0       2055   lcd.o
+        74          0          0          0          0       4727   main.o
+       244          6        620          0        512       5404   startup_tm4c123.o
+       104          0          0          0          0       1070   systicfunctions.o
 
     ----------------------------------------------------------------------
-      2068        172        636          0        512      16600   Object Totals
+      2116        170        636          0        512      16712   Object Totals
          0          0         16          0          0          0   (incl. Generated)
-         0          0          0          0          0          0   (incl. Padding)
+         2          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -375,15 +376,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      2156        188        636          0        512      16268   Grand Totals
-      2156        188        636          0        512      16268   ELF Image Totals
-      2156        188        636          0          0          0   ROM Totals
+      2204        186        636          0        512      16380   Grand Totals
+      2204        186        636          0        512      16380   ELF Image Totals
+      2204        186        636          0          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 2792 (   2.73kB)
+    Total RO  Size (Code + RO Data)                 2840 (   2.77kB)
     Total RW  Size (RW Data + ZI Data)               512 (   0.50kB)
-    Total ROM Size (Code + RO Data + RW Data)       2792 (   2.73kB)
+    Total ROM Size (Code + RO Data + RW Data)       2840 (   2.77kB)
 
 ==============================================================================
 

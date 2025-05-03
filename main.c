@@ -6,8 +6,16 @@ int main(){
 	
 
 SysTick_Init();   
-
-
-	position_curser(0,0);
-	display_String("yahia");
+	init_LCD();
+	display_char('y');
+	display_char('a');
+		display_char('h');
+	display_char('i');
+		display_char('a');
+	display_char(' ');
+	display_char('z');
+		display_char('i');
+	display_char('a');
+	display_char('d');
+	
 }
