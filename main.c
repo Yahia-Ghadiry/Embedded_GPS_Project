@@ -17,6 +17,10 @@ SysTick_Init();
 	display_char('z');
 		display_char('i');
 	display_char('a');
-	display_char('d');
+	display_char('d'); 
+	UART0_vInit() ; 
+	UART_ReadString("ABCD",1000) ;
+
 	
 }
+

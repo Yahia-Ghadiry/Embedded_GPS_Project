@@ -1,19 +1,20 @@
 #ifndef UART_H
 #define UART_H
-
 #include "stdint.h"
 
-#define UART0_CLOCK_PIN 0x01
+#define UART0_CLOCK_PIN 0x01 
+#define UART5_CLOCK_PIN 0x10
 #define GPIOA_CLOCK_PIN 0x01
+#define GPIOE_CLOCK_PIN 0x10
 
 #define CLOCK_READY_PIN 0
 #define UART0_CTL_PIN 0x01
 #define BAUD_16_9600_I 104
 #define BAUD_16_9600_F 11
 
-#define UART0_8_n_1_FIFO 0x70
+#define UART_8_n_1_FIFO 0x70
 
-#define UART0_SYSCLK_SOURCE 0x00
+#define UART_SYSCLK_SOURCE 0x00
 
 #define UART0_TXE_PIN 0x200
 #define UART0_RXE_PIN 0x100
@@ -27,8 +28,13 @@
 #define UART0_PTL_PA01_MASK 0x000000FF
 
 #define GPIO_PORTA_PIN01 0x03
-
-void UART_vInit(void);
+void UART0_vInit(void) ;
+void UART5_vInit(void) ;
 uint8_t UART_u8Read(void);
-void UART0_Write(uint8_t data); //Anas
+void UART_ReadString(uint8_t* buffer, int maxLength) ;
+void UART_Write(uint8_t data); 
+void UART_WriteString(const uint8_t* str) ;
+
+
 #endif
+
