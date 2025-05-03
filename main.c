@@ -2,6 +2,7 @@
 #include "tm4c123gh6pm.h"
 #include "GPIO.h"
 #include "systickFunctions.h"
+#include "uart.h"
 int main(){
 	
 

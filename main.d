@@ -4,3 +4,4 @@
 .\main.o: GPIO.h
 .\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 .\main.o: systickFunctions.h
+.\main.o: uart.h

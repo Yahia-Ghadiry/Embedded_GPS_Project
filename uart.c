@@ -14,7 +14,7 @@ void UART_vInit(void)
     CLR(UART0_CTL_R, UART0_CTL_PIN);
  
     // 3. Set Baud Rate
-    UART0_IBRD_R = BAUD_16_9600_F;
+    UART0_IBRD_R = BAUD_16_9600_I;
 		UART0_FBRD_R = BAUD_16_9600_F;
 	
     // 4. Configure line control for 8-bit, no parity, 1-stop bit, FIFO enabled
@@ -38,7 +38,12 @@ void UART_vInit(void)
     // 10. Disable analog on PA0, PA1
     CLR(GPIO_PORTA_AMSEL_R, GPIO_PORTA_PIN01);
 	
-}
+} 
+uint8_t UART_u8Read(void) 
+{  while(UART0_FR_R & UART_FR_RXFE) ;
+  return (uint8_t )(UART0_DR_R &0XFF) ;
+  
+} 
 
 	void UART0_Write(uint8_t data){
 			while (UART0_FR_R & UART_FR_TXFF);        //Anas

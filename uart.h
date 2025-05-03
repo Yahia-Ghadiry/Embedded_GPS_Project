@@ -7,9 +7,7 @@
 #define GPIOA_CLOCK_PIN 0x01
 
 #define CLOCK_READY_PIN 0
-
 #define UART0_CTL_PIN 0x01
-
 #define BAUD_16_9600_I 104
 #define BAUD_16_9600_F 11
 
@@ -31,6 +29,6 @@
 #define GPIO_PORTA_PIN01 0x03
 
 void UART_vInit(void);
-
+uint8_t UART_u8Read(void);
 void UART0_Write(uint8_t data); //Anas
 #endif
