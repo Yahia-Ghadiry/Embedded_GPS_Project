@@ -1,7 +1,7 @@
 #ifndef GPIO_H
 #define GPIO_H
-
 #include <stdint.h>
+
 
 //========= #define section ============
 #define GPIOA 0
@@ -63,4 +63,5 @@ void GPIO_DIR_SET(uint8_t PORT, uint8_t DIR);
 
 
 void delay(long int period);
-#endif // GPIO_H
+
+#endif 

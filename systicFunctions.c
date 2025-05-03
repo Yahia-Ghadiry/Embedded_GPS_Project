@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include "tm4c123gh6pm.h"
 #include "systickFunctions.h"
+#include "GPIO.h"
 
 
 
@@ -14,10 +15,10 @@ void SystemInit(void)
 // Initialize SysTick Timer
 void SysTick_Init(void)
 {
-    NVIC_ST_CTRL_R = 0;              // 1) Disable SysTick during setup
-    NVIC_ST_RELOAD_R = 0x00FFFFFF;    // 2) Maximum reload value (24-bit)
-    NVIC_ST_CURRENT_R = 0;            // 3) Clear current value
-    NVIC_ST_CTRL_R = 0x05;             // 4) Enable SysTick with core clock (no interrupts)
+    NVIC_ST_CTRL_R = 0;              
+    NVIC_ST_RELOAD_R = 0x00FFFFFF;    
+    NVIC_ST_CURRENT_R = 0;            
+    NVIC_ST_CTRL_R = 0x05;             
 }
 
 // Simple delay function (time in milliseconds)
