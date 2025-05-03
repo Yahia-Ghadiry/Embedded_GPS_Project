@@ -7,19 +7,12 @@ int main(){
 	
 
 SysTick_Init();   
-	init_LCD();
-	display_char('y');
-	display_char('a');
-		display_char('h');
-	display_char('i');
-		display_char('a');
-	display_char(' ');
-	display_char('z');
-		display_char('i');
-	display_char('a');
-	display_char('d'); 
 	UART0_vInit() ; 
-	UART_ReadString("ABCD",1000) ;
+		UART5_vInit() ; 
+	while(1)
+	{
+		UART_vWrite(UART0_ID, UART_u8Read(UART5_ID));
+	}
 
 	
 }

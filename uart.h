@@ -28,12 +28,17 @@
 #define UART0_PTL_PA01_MASK 0x000000FF
 
 #define GPIO_PORTA_PIN01 0x03
+
+#define UART0_ID 0
+#define UART5_ID 5
+
 void UART0_vInit(void) ;
 void UART5_vInit(void) ;
-uint8_t UART_u8Read(void);
-void UART_ReadString(uint8_t* buffer, int maxLength) ;
-void UART_Write(uint8_t data); 
-void UART_WriteString(const uint8_t* str) ;
+
+uint8_t UART_u8Read(uint8_t UART_ID);
+void UART_vReadString(uint8_t UART_ID, uint8_t* buffer, int maxLength) ;
+void UART_vWrite(uint8_t UART_ID, uint8_t data); 
+void UART_vWriteString(uint8_t UART_ID, const uint8_t* str) ;
 
 
 #endif

@@ -78,16 +78,25 @@ void UART5_vInit(void)
 }
 
 
-uint8_t UART_u8Read(void) 
-{  while(UART0_FR_R & UART_FR_RXFE) ;
-  return (uint8_t )(UART0_DR_R &0XFF) ;
-  
+uint8_t UART_u8Read(uint8_t UART_ID) 
+{  
+	switch (UART_ID)
+	{
+		case UART0_ID:
+			while(UART0_FR_R & UART_FR_RXFE) ;
+			return (uint8_t )(UART0_DR_R &0XFF) ;
+			break;
+		case UART5_ID:
+			while(UART5_FR_R & UART_FR_RXFE) ;
+			return (uint8_t )(UART5_DR_R &0XFF) ;
+			break;
+	}
 }  
-void UART_ReadString(uint8_t* buffer, int maxLength) {
+void UART_vReadString(uint8_t UART_ID, uint8_t* buffer, int maxLength) {
     int i = 0;
    uint8_t  c;
     while (i < (maxLength - 1)) {
-        c = UART_u8Read();           // Custom function to receive a character
+        c = UART_u8Read(UART_ID);           // Custom function to receive a character
         if (c == '\r' || c == '\n') {  // Stop reading on Enter
             break;
         }
@@ -97,16 +106,26 @@ void UART_ReadString(uint8_t* buffer, int maxLength) {
 }
 
 
-	void UART_Write(uint8_t data){
-			while (UART0_FR_R & UART_FR_TXFF);  
-			UART0_DR_R = data;      
+	void UART_vWrite(uint8_t UART_ID, uint8_t data)
+	{
+		switch(UART_ID)
+		{
+			case UART0_ID:
+				while (UART0_FR_R & UART_FR_TXFF);  
+				UART0_DR_R = data;      
+					break;
+			case UART5_ID:
+				while (UART5_FR_R & UART_FR_TXFF);  
+				UART5_DR_R = data;      
+					break;
+		}			
 	}
 		
-	void UART_WriteString(const uint8_t* str)
+void UART_vWriteString(uint8_t UART_ID, const uint8_t* str)
 {
-		     while (*str) 
+		  while (*str) 
 			{
-         UART_Write(*str++);
+         UART_vWrite(UART_ID, *str++);
        } 
 			
  } 

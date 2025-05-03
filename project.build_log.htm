@@ -1,0 +1,66 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\clinic\Documents\embeded project\Project Fnal\Embedded_GPS_Project\project.uvproj
+Project File Date:  05/03/2025
+
+<h2>Output:</h2>
+Rebuild target 'Target 1'
+assembling startup_TM4C123.s...
+compiling main.c...
+compiling LCD.c...
+compiling GPIO.c...
+compiling systicFunctions.c...
+compiling uart.c...
+uart.c(88): warning:  #111-D: statement is unreachable
+                        break;
+uart.c(92): warning:  #111-D: statement is unreachable
+                        break;
+uart.c(94): warning:  #940-D: missing return statement at end of non-void function "UART_u8Read"
+  }  
+uart.c(134): warning:  #1-D: last line of file ends without a newline
+                
+uart.c: 4 warnings, 0 errors
+linking...
+Program Size: Code=988 RO-data=636 RW-data=0 ZI-data=512  
+".\project.axf" - 0 Error(s), 4 Warning(s).
+nking...
+.\project.axf: Error: L6218E: Undefined symbol UART_Write (referred from uart.o).
+Not enough information to list image symbols.
+Finished: 1 information, 0 warning and 1 error messages.
+".\project.axf" - 1 Error(s), 5 Warning(s).
+Target not created
+" - 3 Error(s), 5 Warning(s).
+Target not created
+or
+uart.c(134): error: At end of source:  #67: expected a "}"
+uart.c: 5 warnings, 4 errors
+".\project.axf" - 4 Error(s), 5 Warning(s).
+Target not created
+s here after previous syntax error
+uart.c(134): error: At end of source:  #67: expected a "}"
+uart.c: 5 warnings, 4 errors
+".\project.axf" - 7 Error(s), 5 Warning(s).
+Target not created
+: error:  #40: expected an identifier
+      SET(GPIO_PORTA_DEN_R, GPIO_PORTA_PIN01);
+uart.c(36): error:  #18: expected a ")"
+      SET(GPIO_PORTA_DEN_R, GPIO_PORTA_PIN01);
+uart.c(36): error:  #18: expected a ")"
+      SET(GPIO_PORTA_DEN_R, GPIO_PORTA_PIN01);
+uart.c(39): error:  #40: expected an identifier
+      CLR(GPIO_PORTA_AMSEL_R, GPIO_PORTA_PIN01);
+uart.c(39): error:  #18: expected a ")"
+      CLR(GPIO_PORTA_AMSEL_R, GPIO_PORTA_PIN01);
+uart.c(39): error:  #18: expected a ")"
+      CLR(GPIO_PORTA_AMSEL_R, GPIO_PORTA_PIN01);
+uart.c(41): error:  #169: expected a declaration
+  } 
+uart.c(60): warning:  #1-D: last line of file ends without a newline
+                
+uart.c(60): warning: At end of source:  #12-D: parsing restarts here after previous syntax error
+uart.c: 3 warnings, 14 errors
+".\project.axf" - 15 Error(s), 4 Warning(s).
+Target not created
