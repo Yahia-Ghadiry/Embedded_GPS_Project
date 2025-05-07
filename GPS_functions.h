@@ -9,7 +9,18 @@
 #define PI 3.14159265358979323846f
 #define R 6378137  // Earth radius in meters
 
-
+extern char GPS_time[11];        // HHMMSS.ss
+extern char GPS_status;          // 'A' = valid, 'V' = warning
+extern float lat;                // Latitude
+extern char GPS_NS;              // N/S
+extern float lon;                // Longitude
+extern char GPS_EW;              // E/W
+extern float GPS_speed;          // Speed in knots
+extern float GPS_course;         // Course in degrees
+extern uint8_t GPS_date[7];      // DDMMYY
+extern uint8_t mv[6];            // Magnetic variation
+extern char mvEW;                // Magnetic variation direction
+extern char posMode;             // Position mode
 // Function prototypes
 void GPS_Spreading_Data(char* gps_buffer);
 
