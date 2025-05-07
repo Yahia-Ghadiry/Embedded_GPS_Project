@@ -3,132 +3,13 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
-<<<<<<< HEAD
-F:\Lolo\ENG YAYA\college\Jonior Electronics\Embedded\Project\Embedded_GPS_Project\project.uvproj
-Project File Date:  05/01/2025
-=======
 C:\Users\clinic\Documents\embeded project\Project Fnal\Embedded_GPS_Project\project.uvproj
 Project File Date:  05/07/2025
->>>>>>> 1c27cebfb0c420c049d1406f17511a57a5f7b01c
 
 <h2>Output:</h2>
 Rebuild target 'Target 1'
 assembling startup_TM4C123.s...
 compiling main.c...
-<<<<<<< HEAD
-GPS_functions.h(24): warning:  #1-D: last line of file ends without a newline
-  #endif
-main.c(19): warning:  #1-D: last line of file ends without a newline
-  }
-main.c: 2 warnings, 0 errors
-compiling LCD.c...
-compiling GPIO.c...
-compiling systicFunctions.c...
-compiling GPS_functions.c...
-GPS_functions.h(24): warning:  #1-D: last line of file ends without a newline
-  #endif
-GPS_functions.c(32): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
-                  strncpy(GPS_time, token, sizeof(GPS_time) - 1);
-GPS_functions.c: 2 warnings, 0 errors
-linking...
-Program Size: Code=4704 RO-data=784 RW-data=52 ZI-data=524  
-".\project.axf" - 0 Error(s), 4 Warning(s).
-</pre>
-</body>
-</html>
-68: declaration may not appear after executable statement in block
-      char *token;
-GPS_functions.c(25): error:  #268: declaration may not appear after executable statement in block
-      uint8_t field_index = 0;
-GPS_functions.c(32): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *restrict"
-                  strncpy(GPS_time, token, sizeof(GPS_time) - 1);
-GPS_functions.c: 2 warnings, 3 errors
-".\project.axf" - 3 Error(s), 5 Warning(s).
-Target not created
-ain.o).
-.\project.axf: Error: L6200E: Symbol lon multiply defined (by gps_functions.o and main.o).
-.\project.axf: Error: L6200E: Symbol GPS_EW multiply defined (by gps_functions.o and main.o).
-.\project.axf: Error: L6200E: Symbol GPS_speed multiply defined (by gps_functions.o and main.o).
-.\project.axf: Error: L6200E: Symbol GPS_course multiply defined (by gps_functions.o and main.o).
-.\project.axf: Error: L6200E: Symbol GPS_date multiply defined (by gps_functions.o and main.o).
-.\project.axf: Error: L6200E: Symbol mv multiply defined (by gps_functions.o and main.o).
-.\project.axf: Error: L6200E: Symbol mvEW multiply defined (by gps_functions.o and main.o).
-.\project.axf: Error: L6200E: Symbol posMode multiply defined (by gps_functions.o and main.o).
-Not enough information to list image symbols.
-Not enough information to list the image map.
-Finished: 2 information, 0 warning and 12 error messages.
-".\project.axf" - 12 Error(s), 6 Warning(s).
-Target not created
-e specifier
-          LCD_setCursor(2, 0);
-main.c(49): error:  #79: expected a type specifier
-          LCD_setCursor(2, 0);
-main.c(49): warning:  #77-D: this declaration has no storage class or type specifier
-          LCD_setCursor(2, 0);
-main.c(50): error:  #79: expected a type specifier
-          LCD_displayString("T:");
-main.c(50): warning:  #77-D: this declaration has no storage class or type specifier
-          LCD_displayString("T:");
-main.c(51): warning:  #77-D: this declaration has no storage class or type specifier
-          LCD_displayString(timeBuf);
-main.c(51): error:  #92: identifier-list parameters may only be used in a function definition
-          LCD_displayString(timeBuf);
-main.c(52): error:  #79: expected a type specifier
-          LCD_displayString(" S:");
-main.c(52): warning:  #77-D: this declaration has no storage class or type specifier
-          LCD_displayString(" S:");
-main.c(53): warning:  #77-D: this declaration has no storage class or type specifier
-          LCD_displayString(speedBuf);
-main.c(53): error:  #92: identifier-list parameters may only be used in a function definition
-          LCD_displayString(speedBuf);
-main.c(56): error:  #79: expected a type specifier
-          LCD_setCursor(3, 0);
-main.c(56): error:  #79: expected a type specifier
-          LCD_setCursor(3, 0);
-main.c(56): warning:  #77-D: this declaration has no storage class or type specifier
-          LCD_setCursor(3, 0);
-main.c(57): warning:  #77-D: this declaration has no storage class or type specifier
-          LCD_displayString(dateBuf);
-main.c(57): error:  #92: identifier-list parameters may only be used in a function definition
-          LCD_displayString(dateBuf);
-main.c(58): error:  #79: expected a type specifier
-          LCD_displayString(" ");
-main.c(58): warning:  #77-D: this declaration has no storage class or type specifier
-          LCD_displayString(" ");
-main.c(59): warning:  #77-D: this declaration has no storage class or type specifier
-          LCD_displayString(statusBuf);
-main.c(59): error:  #92: identifier-list parameters may only be used in a function definition
-          LCD_displayString(statusBuf);
-main.c(61): error:  #79: expected a type specifier
-          delay_ms(1000);
-main.c(61): warning:  #77-D: this declaration has no storage class or type specifier
-          delay_ms(1000);
-main.c(63): error:  #169: expected a declaration
-      }
-main.c(71): warning: At end of source:  #12-D: parsing restarts here after previous syntax error
-main.c: 23 warnings, 20 errors
-compiling LCD.c...
-compiling GPIO.c...
-compiling systicFunctions.c...
-compiling GPS_functions.c...
-GPS_functions.h(10): warning:  #1-D: last line of file ends without a newline
-  const char* convertTimeToGMT3(const char* rawTime);
-GPS_functions.c(76): error:  #268: declaration may not appear after executable statement in block
-      char hh[3] = { rawTime[0], rawTime[1], '\0' };
-GPS_functions.c(76): error:  #28: expression must have a constant value
-      char hh[3] = { rawTime[0], rawTime[1], '\0' };
-GPS_functions.c(76): error:  #28: expression must have a constant value
-      char hh[3] = { rawTime[0], rawTime[1], '\0' };
-GPS_functions.c(77): error:  #268: declaration may not appear after executable statement in block
-      char mm[3] = { rawTime[2], rawTime[3], '\0' };
-GPS_functions.c(77): error:  #28: expression must have a constant value
-      char mm[3] = { rawTime[2], rawTime[3], '\0' };
-GPS_functions.c(77): error:  #28: expression must have a constant value
-      char mm[3] = { rawTime[2], rawTime[3], '\0' };
-GPS_functions.c: 1 warning, 6 errors
-".\project.axf" - 26 Error(s), 24 Warning(s).
-Target not created
-=======
 compiling LCD.c...
 compiling GPIO.c...
 compiling systicFunctions.c...
@@ -140,11 +21,8 @@ uart.c(177): warning:  #1-D: last line of file ends without a newline
 uart.c: 2 warnings, 0 errors
 compiling TRY UART.c...
 linking...
-Program Size: Code=1144 RO-data=652 RW-data=8 ZI-data=512  
+Program Size: Code=1152 RO-data=652 RW-data=8 ZI-data=616  
 ".\project.axf" - 0 Error(s), 2 Warning(s).
-Load "C:\\Users\\clinic\\Documents\\embeded project\\Project Fnal\\Embedded_GPS_Project\\project.axf" 
-Connecting: Mode=JTAG, Speed=1000000Hz
-Erase Done.
-Programming Done.
-Verify OK.
->>>>>>> 1c27cebfb0c420c049d1406f17511a57a5f7b01c
+</pre>
+</body>
+</html>

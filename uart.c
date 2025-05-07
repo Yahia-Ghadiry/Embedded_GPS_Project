@@ -1,5 +1,5 @@
 #include "uart.h"
-#include "tm4c123gh6pm.h"
+#include "TM4C123.h"
 #include "bit_utilies.h"
 
 void UART0_vInit(void)
@@ -39,48 +39,6 @@ void UART0_vInit(void)
     CLR(GPIO_PORTA_AMSEL_R, GPIO_PORTA_PIN01);
 	
 } 
-<<<<<<< HEAD
-
-void UART5_vInit(void)
-{
-    // 1. Enable clocks for UART5 and Port E
-   SET(SYSCTL_RCGCUART_R, UART5_CLOCK_PIN);    // ox20
-    SET(SYSCTL_RCGCGPIO_R, GPIOE_CLOCK_PIN);    
-    while ((SYSCTL_PRGPIO_R & GPIOE_CLOCK_PIN) == CLOCK_READY_PIN);  
-
-    // 2. Disable UART5 before configuration
-     CLR(UART5_CTL_R, UART_CTL_PIN);
-
-    // 3. Set Baud Rate (Assume 9600 baud, 16 MHz clock)
-    UART5_IBRD_R = BAUD_16_9600_I;;   // Integer part
-    UART5_FBRD_R =BAUD_16_9600_F ;    // Fractional part
-
-    // 4. Configure line control: 8-bit, no parity, 1-stop bit, FIFO enabled
-    UART5_LCRH_R = UART_8_n_1_FIFO ;
-
-    // 5. Set system clock 
-    UART5_CC_R = UART_SYSCLK_SOURCE;
-
-    // 6. Enable UART5, TX and RX
-     SET(UART5_CTL_R, UART_PIN );
-
-    // 7. Enable alternate functions on PE4 (RX), PE5 (TX)
-    SET(GPIO_PORTE_AFSEL_R, UART5_CLOCK_PIN);  //GPIO_PORTE_AFSEL_R |= (1 << 4) | (1 << 5);
-
-    // 8. Configure PE4 and PE5 for UART5 in PCTL
-		
-     SET(GPIO_PORTE_PCTL_R, UART5_PTL_PE45);     //GPIO_PORTE_PCTL_R |= (0x1 << 20) | (0x1 << 24); // PE4 = U5RX, PE5 = U5TX
-
-    // 9. Enable digital function
-     SET(GPIO_PORTE_DEN_R,UART5_CLOCK_PIN ); // GPIO_PORTE_DEN_R |= (1 << 4) | (1 << 5);
-
-    // 10. Disable analog function
-    CLR(GPIO_PORTE_AMSEL_R,UART5_CLOCK_PIN ) ;
-}
-
-
-uint8_t UART_u8Read(uint8_t UART_ID) 
-=======
 void UART6_vInit(void)
 {
     // 1. Enable clocks for UART5 and Port E
@@ -157,22 +115,11 @@ void UART5_vInit(void)
 
 uint8_t UART_u8Read(uint8_t UART_ID) //while(UART0_FR_R & UART_FR_RXFE) ;
                                       //return (uint8_t )(UART0_DR_R &0XFF) 
->>>>>>> 1c27cebfb0c420c049d1406f17511a57a5f7b01c
 {  
 	switch (UART_ID)
 	{
 		case UART0_ID:
 			while(UART0_FR_R & UART_FR_RXFE) ;
-<<<<<<< HEAD
-			return (uint8_t )(UART0_DR_R &0XFF) ;
-			break;
-		case UART5_ID:
-			while(UART5_FR_R & UART_FR_RXFE) ;
-			return (uint8_t )(UART5_DR_R &0XFF) ;
-			break;
-	}
-}  
-=======
 			return (uint8_t) (UART0_DR_R & 0XFF) ;
 			
 		case UART5_ID:
@@ -185,7 +132,6 @@ uint8_t UART_u8Read(uint8_t UART_ID) //while(UART0_FR_R & UART_FR_RXFE) ;
 	} 
 } 
 
->>>>>>> 1c27cebfb0c420c049d1406f17511a57a5f7b01c
 void UART_vReadString(uint8_t UART_ID, uint8_t* buffer, int maxLength) {
     int i = 0;
    uint8_t  c;
@@ -212,13 +158,10 @@ void UART_vReadString(uint8_t UART_ID, uint8_t* buffer, int maxLength) {
 				while (UART5_FR_R & UART_FR_TXFF);  
 				UART5_DR_R = data;      
 					break;
-<<<<<<< HEAD
-=======
 			case UART6_ID:
 				while (UART6_FR_R & UART_FR_TXFF);  
 				UART6_DR_R = data;      
 					break;
->>>>>>> 1c27cebfb0c420c049d1406f17511a57a5f7b01c
 		}			
 	}
 		

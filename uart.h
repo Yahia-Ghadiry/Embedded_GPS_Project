@@ -4,10 +4,6 @@
 
 #define UART0_CLOCK_PIN 0x01 
 #define UART5_CLOCK_PIN 0x20  
-<<<<<<< HEAD
-#define GPIOA_CLOCK_PIN 0x01
-#define GPIOE_CLOCK_PIN 0x10
-=======
 #define UART6_CLOCK_PIN 0x40  
 #define GPIOA_CLOCK_PIN 0x01  
 #define GPIOC_CLOCK_PIN 0x04  
@@ -16,7 +12,6 @@
 
 #define GPIOD_PIN45 0x30
 #define GPIOE_PIN45 0x30
->>>>>>> 1c27cebfb0c420c049d1406f17511a57a5f7b01c
 
 #define CLOCK_READY_PIN 0
 #define UART_CTL_PIN 0x01
@@ -36,30 +31,20 @@
 #define UART0_ALT_PA01 0x03
 #define UART0_PTL_PA01 0x00000011
 #define UART0_PTL_PA01_MASK 0x000000FF 
-<<<<<<< HEAD
-#define UART5_PTL_PE45 0x01100000
-=======
 #define UART5_PTL_PE45_MASK 0x00FF0000 
 #define UART5_PTL_PE45 0x00110000
 #define UART6_PTL_PD45_MASK 0x00FF0000 
 #define UART6_PTL_PD45 0x00110000
->>>>>>> 1c27cebfb0c420c049d1406f17511a57a5f7b01c
 
 #define GPIO_PORTA_PIN01 0x03
 
 #define UART0_ID 0
 #define UART5_ID 5
-<<<<<<< HEAD
-
-void UART0_vInit(void) ;
-void UART5_vInit(void) ;
-=======
 #define UART6_ID 6
 
 void UART0_vInit(void) ;
 void UART5_vInit(void) ;
 void UART6_vInit(void) ;
->>>>>>> 1c27cebfb0c420c049d1406f17511a57a5f7b01c
 
 uint8_t UART_u8Read(uint8_t UART_ID);
 void UART_vReadString(uint8_t UART_ID, uint8_t* buffer, int maxLength) ;
