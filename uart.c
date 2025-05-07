@@ -130,7 +130,8 @@ uint8_t UART_u8Read(uint8_t UART_ID) //while(UART0_FR_R & UART_FR_RXFE) ;
 			while(UART6_FR_R & UART_FR_RXFE) ;
 			return (uint8_t) (UART6_DR_R & 0XFF) ;
 	} 
-} 
+}
+
 
 void UART_vReadString(uint8_t UART_ID, uint8_t* buffer, int maxLength) {
     int i = 0;

@@ -28,7 +28,9 @@ int main()
 					kkk--;
 				}
 			//UART_vWrite(UART5_ID, aaa7689
-		   UART_vWriteString(UART0_ID, str);      //UART_vWrite(UART0_ID, UART_u8Read(UART5_ID));
+				UART_vWriteString(UART0_ID, str);    
+				UART_vWrite(UART0_ID, '\r');    
+				UART_vWrite(UART0_ID, '\n');
 				kkk = 80;
 				while (kkk != 0)
 				{
