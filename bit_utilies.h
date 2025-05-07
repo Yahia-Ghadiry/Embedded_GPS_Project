@@ -1,13 +1,15 @@
 #ifndef Bit_Utilies
 #define Bit_Utilies
+#define GET_BIT(reg1,bit)   (((reg1)>>(bit))&1)
+#define GET_REG(reg)        ((reg)&0xff)
+#define SET(reg,val)        ((reg) |= (val))
+#define SET_BIT(reg,bit)    ((reg) |= (1<<(bit)))
 
-#define GET_BIT(reg1,bit)   ((reg1>>bit)&1)
-#define GET_REG(reg)        (reg&0xff)
+#define CLR(reg,val)        ((reg) &=~(val))
+#define CLR_BIT(reg,bit)    ((reg) &=~(1<<(bit)))
 
-#define SET(reg,val)        reg |= val
-#define SET_BIT(reg,val)    reg |= (1<<val)
+#define MASK(reg, mask) ((reg) & (mask))
 
-#define CLR(reg,val)        reg &=~val
-#define CLR_BIT(reg,val)    reg &=~(1<<val)
+#define REV_MASK(reg, mask) ((reg) & ~(mask))
 
 #endif

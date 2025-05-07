@@ -4,8 +4,14 @@
 ".\lcd.o"
 ".\gpio.o"
 ".\systicfunctions.o"
+<<<<<<< HEAD
 ".\gps_functions.o"
 --library_type=microlib --strict --scatter ".\project.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
+=======
+".\uart.o"
+".\try uart.o"
+--library_type=microlib --ro-base 0x00000000 --entry 0x00000000 --rw-base 0x20000000 --entry Reset_Handler --first __Vectors --strict --summary_stderr --info summarysizes --map --xref --callgraph --symbols
+>>>>>>> 1c27cebfb0c420c049d1406f17511a57a5f7b01c
 --info sizes --info totals --info unused --info veneers
 --list ".\project.map" -o .\project.axf

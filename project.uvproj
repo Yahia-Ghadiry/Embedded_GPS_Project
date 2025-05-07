@@ -167,7 +167,7 @@
             <UseExternalTool>0</UseExternalTool>
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
-            <Capability>1</Capability>
+            <Capability>0</Capability>
             <DriverSelection>4096</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
@@ -436,9 +436,30 @@
               <FilePath>.\systicFunctions.c</FilePath>
             </File>
             <File>
+<<<<<<< HEAD
               <FileName>GPS_functions.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\GPS_functions.c</FilePath>
+=======
+              <FileName>uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>uart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\uart.h</FilePath>
+            </File>
+            <File>
+              <FileName>bit_utilies.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\bit_utilies.h</FilePath>
+            </File>
+            <File>
+              <FileName>TRY UART.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\TRY UART.c</FilePath>
+>>>>>>> 1c27cebfb0c420c049d1406f17511a57a5f7b01c
             </File>
           </Files>
         </Group>

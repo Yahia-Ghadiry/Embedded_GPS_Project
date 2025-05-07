@@ -167,7 +167,11 @@
             <UseExternalTool>0</UseExternalTool>
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
+<<<<<<< HEAD
             <Capability>1</Capability>
+=======
+            <Capability>0</Capability>
+>>>>>>> 1c27cebfb0c420c049d1406f17511a57a5f7b01c
             <DriverSelection>4096</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
@@ -434,6 +438,21 @@
               <FileName>systicFunctions.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\systicFunctions.c</FilePath>
+            </File>
+            <File>
+              <FileName>uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>uart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\uart.h</FilePath>
+            </File>
+            <File>
+              <FileName>bit_utilies.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\bit_utilies.h</FilePath>
             </File>
           </Files>
         </Group>
