@@ -8,81 +8,109 @@
 // Constants for GPS calculations
 #define PI 3.141592653589793
 #define R 6371.0f // Radius of Earth in kilometers
+#define MAX_FIELD_LEN 16
+char    GPS_time[11] = "";   // HHMMSS.ss
+char    GPS_status   = 'V';
+float   lat          = 0.0f;
+char    GPS_NS       = 'N';
+float   lon          = 0.0f;
+char    GPS_EW       = 'E';
+float   GPS_speed    = 0.0f;
+float   GPS_course   = 0.0f;
+uint8_t GPS_date[7]  = "";   // DDMMYY
+uint8_t mv[6]        = "";   // Magnetic variation
+char    mvEW        = ' ';
+char    posMode     = ' ';
 
-// Example buffer containing the GPS sentence
-char GPS_time[11] = "";        // HHMMSS.ss
-char GPS_status = 'V';         // 'A' = valid, 'V' = warning
-float lat = 0.0f;              // Latitude
-char GPS_NS = 'N';             // North/South
-float lon = 0.0f;              // Longitude
-char GPS_EW = 'E';             // East/West
-float GPS_speed = 0.0f;        // Speed in knots
-float GPS_course = 0.0f;       // Course in degrees
-uint8_t GPS_date[7] = "";      // DDMMYY
-uint8_t mv[6] = "";            // Magnetic variation (optional)
-char mvEW = ' ';               // Magnetic variation direction
-char posMode = ' ';            // Position mode
+void GPS_Spreading_Data(const char *gps_buffer) {
+    /* 1. Declarations first (C90) */
+    char        field[MAX_FIELD_LEN];
+    const char *p;
+    uint8_t     idx;
+    uint8_t     len;
 
-// Function to parse the GPS data from the NMEA sentence
-void GPS_Spreading_Data(char* gps_buffer) {
-    char *token;                 // Token used for parsing the sentence
-    uint8_t field_index = 0;     // To keep track of the field we are processing
+    /* 2. Validate that buffer starts with "$GPRMC," */
+    if (gps_buffer == NULL || strncmp(gps_buffer, "$GPRMC,", 7) != 0) {
+        return;
+    }
 
-    if (!gps_buffer || strncmp(gps_buffer, "$GPRMC", 6) != 0) return;
+    /* 3. Initialize pointer—skip the "$GPRMC," prefix */
+    p   = gps_buffer + 7;
+    idx = 0;
 
-    token = strtok(gps_buffer, ",");
-
-    while (token != NULL) {
-        switch (field_index) {
+    /* 4. Parse up to 12 fields separated by commas */
+    while (*p != '\0' && idx <= 11) {
+        len = 0;
+        /* Copy characters into local field buffer */
+        while (*p != '\0' && *p != ',' && len < (MAX_FIELD_LEN - 1)) {
+            field[len++] = *p++;
+        }
+        field[len] = '\0';  /* Null-terminate */
+        
+        /* 5. Assign to globals based on field index */
+        switch (idx) {
+            case 0:
+                /* UTC Time: hhmmss.sss */
+                strncpy(GPS_time, field, sizeof(GPS_time) - 1);
+                GPS_time[sizeof(GPS_time) - 1] = '\0';
+                break;
             case 1:
-                strncpy(GPS_time, token, sizeof(GPS_time) - 1);
-                GPS_time[sizeof(GPS_time) - 1] = '\0';  // Ensure null-termination
+                /* Status: A=active, V=void */
+                GPS_status = field[0];
                 break;
             case 2:
-                GPS_status = token[0];
+                /* Latitude: ddmm.mmmm format */
+                lat = (float)atof(field);
                 break;
             case 3:
-                lat = atof(token); // Latitude in ddmm.mmmmm format
+                /* North/South indicator */
+                GPS_NS = field[0];
                 break;
             case 4:
-                GPS_NS = token[0]; // North/South
+                /* Longitude: dddmm.mmmm format */
+                lon = (float)atof(field);
                 break;
             case 5:
-                lon = atof(token); // Longitude in dddmm.mmmmm format
+                /* East/West indicator */
+                GPS_EW = field[0];
                 break;
             case 6:
-                GPS_EW = token[0]; // East/West
+                /* Speed over ground in knots */
+                GPS_speed = (float)atof(field);
                 break;
             case 7:
-                GPS_speed = atof(token); // Speed in knots
+                /* Course over ground in degrees */
+                GPS_course = (float)atof(field);
                 break;
             case 8:
-                GPS_course = atof(token); // Course in degrees
+                /* Date: DDMMYY */
+                strncpy((char*)GPS_date, field, sizeof(GPS_date) - 1);
+                GPS_date[sizeof(GPS_date) - 1] = '\0';
                 break;
             case 9:
-                strncpy((char*)GPS_date, token, sizeof(GPS_date) - 1); // Date in DDMMYY format
-                GPS_date[sizeof(GPS_date) - 1] = '\0';  // Ensure null-termination
+                /* Magnetic variation */
+                strncpy((char*)mv, field, sizeof(mv) - 1);
+                mv[sizeof(mv) - 1] = '\0';
                 break;
             case 10:
-                if (strlen(token) > 0) {
-                    strncpy(mv, token, sizeof(mv) - 1); // Magnetic variation
-                    mv[sizeof(mv) - 1] = '\0';  // Ensure null-termination
-                }
+                /* Magnetic variation direction */
+                mvEW = field[0];
                 break;
             case 11:
-                mvEW = token[0]; // Magnetic variation direction (E/W)
-                break;
-            case 12:
-                posMode = token[0]; // Position mode (A = autonomous, D = differential)
+                /* Mode indicator: A=autonomous, D=differential */
+                posMode = field[0];
                 break;
             default:
                 break;
         }
-        token = strtok(NULL, ",");
-        field_index++;
+
+        /* 6. Advance past comma if present */
+        if (*p == ',') {
+            p++;
+        }
+        idx++;
     }
 }
-
 // Convert GPS latitude/longitude in ddmm.mmmmm format to decimal degrees
 float GPS_angle_format_to_degrees(float angle) {  
     int degrees = (int)angle / 100;  // Extract degrees (e.g., 47 from 4717.11437)

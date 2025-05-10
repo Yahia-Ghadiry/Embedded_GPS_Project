@@ -5,3 +5,8 @@
 .\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 .\main.o: systickFunctions.h
 .\main.o: uart.h
+.\main.o: GPS_functions.h
+.\main.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h
+.\main.o: C:\Keil\ARM\ARMCC\bin\..\include\math.h
+.\main.o: Display.h
+.\main.o: Display.h

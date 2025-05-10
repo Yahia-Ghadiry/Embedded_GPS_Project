@@ -113,7 +113,7 @@ void UART5_vInit(void)
 }
 
 
-uint8_t UART_u8Read(uint8_t UART_ID) //while(UART0_FR_R & UART_FR_RXFE) ;
+char UART_u8Read(char UART_ID) //while(UART0_FR_R & UART_FR_RXFE) ;
                                       //return (uint8_t )(UART0_DR_R &0XFF) 
 {  
 	switch (UART_ID)
@@ -133,7 +133,7 @@ uint8_t UART_u8Read(uint8_t UART_ID) //while(UART0_FR_R & UART_FR_RXFE) ;
 }
 
 
-void UART_vReadString(uint8_t UART_ID, uint8_t* buffer, int maxLength) {
+void UART_vReadString(uint8_t UART_ID, char* buffer, int maxLength) {
     int i = 0;
    uint8_t  c;
     while (i < (maxLength - 1)) {
@@ -166,7 +166,7 @@ void UART_vReadString(uint8_t UART_ID, uint8_t* buffer, int maxLength) {
 		}			
 	}
 		
-void UART_vWriteString(uint8_t UART_ID, const uint8_t* str)
+void UART_vWriteString(uint8_t UART_ID, const char* str)
 {
 		  while (*str) 
 			{
@@ -174,5 +174,4 @@ void UART_vWriteString(uint8_t UART_ID, const uint8_t* str)
        } 
 			
 } 
-	
-		
+			

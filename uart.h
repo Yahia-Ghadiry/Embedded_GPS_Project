@@ -46,10 +46,10 @@ void UART0_vInit(void) ;
 void UART5_vInit(void) ;
 void UART6_vInit(void) ;
 
-uint8_t UART_u8Read(uint8_t UART_ID);
-void UART_vReadString(uint8_t UART_ID, uint8_t* buffer, int maxLength) ;
+char UART_u8Read(char UART_ID);
+void UART_vReadString(uint8_t UART_ID, char* buffer, int maxLength) ;
 void UART_vWrite(uint8_t UART_ID, uint8_t data); 
-void UART_vWriteString(uint8_t UART_ID, const uint8_t* str) ;
+void UART_vWriteString(uint8_t UART_ID, const char* str) ;
 
 
 #endif

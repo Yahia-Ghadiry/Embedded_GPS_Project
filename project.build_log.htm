@@ -4,25 +4,41 @@
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
 D:\Empeddedlap\project\empedde\Embedded_GPS_Project\project.uvproj
-Project File Date:  05/07/2025
+Project File Date:  05/08/2025
 
 <h2>Output:</h2>
 Rebuild target 'Target 1'
 assembling startup_TM4C123.s...
 compiling main.c...
+compiling GPS_functions.c...
+GPS_functions.c(9): warning:  #47-D: incompatible redefinition of macro "PI" (declared at line 9 of "GPS_functions.h")
+  #define PI 3.141592653589793
+GPS_functions.c(10): warning:  #47-D: incompatible redefinition of macro "R" (declared at line 10 of "GPS_functions.h")
+  #define R 6371.0f // Radius of Earth in kilometers
+GPS_functions.c(123): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      return ((GPS_angle_format_to_degrees(angle) * PI) / 180.0f);  // Convert degrees to radians
+GPS_functions.c(128): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      return ((degrees * PI) / 180.0f);
+GPS_functions.c(133): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      return ((radians * 180.0f) / PI);
+GPS_functions.c: 5 warnings, 0 errors
+compiling Display.c...
+Display.c(36): warning:  #1-D: last line of file ends without a newline
+  }
+Display.c: 1 warning, 0 errors
 compiling LCD.c...
 compiling GPIO.c...
 compiling systicFunctions.c...
 compiling uart.c...
 uart.c(133): warning:  #940-D: missing return statement at end of non-void function "UART_u8Read"
   }
-uart.c(178): warning:  #1-D: last line of file ends without a newline
-                
+uart.c(177): warning:  #1-D: last line of file ends without a newline
+                        
 uart.c: 2 warnings, 0 errors
 compiling TRY UART.c...
 linking...
-Program Size: Code=1168 RO-data=652 RW-data=8 ZI-data=616  
-".\project.axf" - 0 Error(s), 2 Warning(s).
+Program Size: Code=8160 RO-data=848 RW-data=56 ZI-data=624  
+".\project.axf" - 0 Error(s), 8 Warning(s).
 Load "D:\\Empeddedlap\\project\\empedde\\Embedded_GPS_Project\\project.axf" 
 Connecting: Mode=JTAG, Speed=1000000Hz
 Erase Done.
@@ -31,3 +47,9 @@ Verify OK.
 </pre>
 </body>
 </html>
+rget DLL has been cancelled
+Load "D:\\Empeddedlap\\project\\empedde\\Embedded_GPS_Project\\project.axf" 
+Connecting: Mode=JTAG, Speed=1000000Hz
+Erase Done.
+Programming Done.
+Verify OK.
