@@ -10,17 +10,17 @@
 #define R 6378137  // Earth radius in meters
 
 extern char    GPS_time[11];   // HHMMSS.ss
-extern char    GPS_status;     // 'A' = valid, 'V' = warning
+extern char    GPS_status;   
 extern float   lat;            // Latitude (ddmm.mmmm)
-extern char    GPS_NS;         // 'N' or 'S'
+extern char    GPS_NS;        
 extern float   lon;            // Longitude (dddmm.mmmm)
-extern char    GPS_EW;         // 'E' or 'W'
-extern char   GPS_speed[8];      // Speed in knots
-extern float   GPS_course;     // Course in degrees
-extern uint8_t GPS_date[7];    // DDMMYY
-extern uint8_t mv[6];          // Magnetic variation
-extern char    mvEW;           // 'E' or 'W'
-extern char    posMode;        // Position mode (A/D)
+extern char    GPS_EW;      
+extern char   GPS_speed[8];     
+extern float   GPS_course;    
+extern uint8_t GPS_date[7];    
+extern uint8_t mv[6];          
+extern char    mvEW;           
+extern char    posMode;        
 
 
 void GPS_Spreading_Data(const char *gps_buffer);

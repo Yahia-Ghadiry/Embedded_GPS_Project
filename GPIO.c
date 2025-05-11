@@ -1,27 +1,27 @@
 #include <stdint.h>
 #include "tm4c123gh6pm.h"
 #include "GPIO.h"
-//#include "core_cm4x.h"   // Adjust based on Cortex-M version
+extern uint16_t acumm_dis;
+
 
 
 //======== Port A =================
 void GPIO_Init_PortA(void) {
    	
-	  SYSCTL_RCGCUART_R |= 0x01;     // Enable UART0 clock
+	  SYSCTL_RCGCUART_R |= 0x01;     
 		while ((SYSCTL_PRUART_R & 0x01) == 0) 
-    SYSCTL_RCGCGPIO_R |= 0x01;     // Enable PORTA clock
-    while ((SYSCTL_PRGPIO_R & 0x01) == 0); // Wait for GPIOA to be ready
+    SYSCTL_RCGCGPIO_R |= 0x01;     
+    while ((SYSCTL_PRGPIO_R & 0x01) == 0); 
+    UART0_CTL_R &= ~0x01;          
+    UART0_IBRD_R = 104;            
+    UART0_FBRD_R = 11;             
+    UART0_LCRH_R = 0x70;          
+    UART0_CTL_R = 0x301;           
 
-    UART0_CTL_R &= ~0x01;          // Disable UART0 during config
-    UART0_IBRD_R = 104;            // Integer part for 9600 baud
-    UART0_FBRD_R = 11;             // Fractional part for 9600 baud
-    UART0_LCRH_R = 0x70;           // 8-bit, no parity, 1 stop bit, enable FIFO
-    UART0_CTL_R = 0x301;           // Enable UART0, TXE and RXE
-
-    GPIO_PORTA_AFSEL_R |= 0x03;    // Enable alt function on PA0, PA1
-    GPIO_PORTA_PCTL_R |= 0x11;     // Configure PA0, PA1 for UART
-    GPIO_PORTA_DEN_R |= 0x03;      // Enable digital I/O on PA0, PA1
-    GPIO_PORTA_AMSEL_R &= ~0x03;   // Disable analog on PA0, PA1
+    GPIO_PORTA_AFSEL_R |= 0x03;    
+    GPIO_PORTA_PCTL_R |= 0x11;     
+    GPIO_PORTA_DEN_R |= 0x03;      
+    GPIO_PORTA_AMSEL_R &= ~0x03;   
 }
 
 //======== Port B =================
@@ -65,8 +65,20 @@ void GPIO_Init_PortF(void){
     GPIO_PORTF_DIR_R |= 0x0E;                
     GPIO_PORTF_DEN_R |= 0x1F; 
     GPIO_PORTF_PUR_R |= 0x11;  
-	
 		GPIO_LED_ALL_OFF();
+		 // Interrupt Configuration for PC4
+    GPIO_PORTC_IS_R &= ~0x11;                
+    GPIO_PORTC_IBE_R &= ~0x11;               
+    GPIO_PORTC_IEV_R &= ~0x11;               
+    GPIO_PORTC_ICR_R = 0x11;                 
+    GPIO_PORTC_IM_R |= 0x11;                 
+
+    NVIC_EN0_R |= (1 << 5);                  
+	
+
+
+
+
 }
 
 void GPIO_Init_A_B_F(void){
@@ -75,50 +87,43 @@ void GPIO_Init_A_B_F(void){
 	GPIO_Init_PortF();
 }
 
-// Red LED (PF1)
 void GPIO_LED_RED_ON(void)   { GPIO_PORTF_DATA_R |= 0x02; }
 void GPIO_LED_RED_OFF(void)  { GPIO_PORTF_DATA_R = ~0x02; }
-
-// Blue LED (PF2)
 void GPIO_LED_BLUE_ON(void)  { GPIO_PORTF_DATA_R |= 0x04; }
 void GPIO_LED_BLUE_OFF(void) { GPIO_PORTF_DATA_R &= ~0x04; }
-
-// Green LED (PF3)
 void GPIO_LED_GREEN_ON(void)  { GPIO_PORTF_DATA_R |= 0x08; }
 void GPIO_LED_GREEN_OFF(void) { GPIO_PORTF_DATA_R &= ~0x08; }
 
-// All LEDs (PF1 | PF2 | PF3)
 void GPIO_LED_ALL_ON(void) 	  {	GPIO_PORTF_DATA_R |= 0x0E  ;}
 
 void GPIO_LED_ALL_OFF(void) 	{ GPIO_PORTF_DATA_R &= ~0x0E ;}
 
 //=================== PORT C Init & Interrupt Config ==================
 void GPIO_Init_PortC_PC4(void) {
-    SYSCTL_RCGCGPIO_R |= 0x04;               // Enable clock for Port C
-    while ((SYSCTL_PRGPIO_R & 0x04) == 0) {} // Wait until Port C is ready
+    SYSCTL_RCGCGPIO_R |= 0x04;              
+    while ((SYSCTL_PRGPIO_R & 0x04) == 0) {} 
 
-    GPIO_PORTC_LOCK_R = 0x4C4F434B;          // Unlock PC4 if needed
-    GPIO_PORTC_CR_R |= 0x10;                 // Allow changes on PC4
+    GPIO_PORTC_LOCK_R = 0x4C4F434B;        
+    GPIO_PORTC_CR_R |= 0x30;               
+    GPIO_PORTC_AFSEL_R &= ~0x30;           
+    GPIO_PORTC_AMSEL_R &= ~0x30;            
+   
+  GPIO_PORTC_DIR_R = (GPIO_PORTC_DIR_R & ~0x10) | 0x20;		
+    GPIO_PORTC_PUR_R |= 0x10;               
+    GPIO_PORTC_DEN_R |= 0x30;
 
-    GPIO_PORTC_AFSEL_R &= ~0x10;             // Disable alternate functions
-    GPIO_PORTC_AMSEL_R &= ~0x10;             // Disable analog on PC4
-
-    GPIO_PORTC_DIR_R &= ~0x10;               // PC4 as input
-    GPIO_PORTC_PUR_R |= 0x10;                // Enable pull-up resistor on PC4
-    GPIO_PORTC_DEN_R |= 0x10;                // Enable digital function
-
-    // Interrupt Configuration for PC4
-    GPIO_PORTC_IS_R &= ~0x10;                // Edge-sensitive
-    GPIO_PORTC_IBE_R &= ~0x10;               // Not both edges
-    GPIO_PORTC_IEV_R &= ~0x10;               // Falling edge
-    GPIO_PORTC_ICR_R = 0x10;                 // Clear interrupt flag
-    GPIO_PORTC_IM_R |= 0x10;                 // Unmask interrupt for PC4
-
-    NVIC_EN0_R |= (1 << 2);                  // Enable IRQ for Port C (IRQ#2)
+    GPIO_PORTC_IS_R &= ~0x10;                
+    GPIO_PORTC_IBE_R &= ~0x10;               
+    GPIO_PORTC_IEV_R &= ~0x10;              
+    GPIO_PORTC_ICR_R = 0x10;               
+    GPIO_PORTC_IM_R |= 0x10;                
+    NVIC_EN0_R |= (1 << 2);                 
 		enableGlobalInterrupts();
 }
+
+
 void enableGlobalInterrupts(void) {
-    __enable_irq();  // Enables all maskable interrupts
+    __enable_irq(); 
 }
 
 
@@ -190,8 +195,8 @@ void delay(long int period) {
     for (i = 0; i < period; i++);
 }
 
-void GPIOPortC_Handler(void) {
-    if (GPIO_PORTC_MIS_R & 0x10) {
+void GPIOC_Handler(void) {
+    if (GPIO_PORTC_RIS_R & 0x10) {
         GPIO_PORTC_ICR_R = 0x10;   // Clear the interrupt
         acumm_dis = 0;
     }

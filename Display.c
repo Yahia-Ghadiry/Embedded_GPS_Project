@@ -27,6 +27,7 @@ void init_display(void){
 	  clear();
 	display_String("Location ");
 	position_curser(0,10);
+	
 		display_String(" Distance");
 	position_curser(2,0);
 		display_String("Speed");
@@ -63,7 +64,7 @@ position_curser(3,0);
 void speed_display(uint8_t *str){
 	position_curser(3,0);
 	display_String(str);
-	display_String("m/s");
+	display_String("km/h");
 
 }
 

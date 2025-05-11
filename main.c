@@ -35,23 +35,26 @@ static const double longitudes[38] = {
   31.277854, 31.277995,31.277826
 
 };
-volatile int kkk = 88888;
+
 char ito_string[100];
-uint8_t aaa = '0';
+
 char str[100];
-uint8_t count = 10;
+uint32_t count = 20;
 uint8_t first_gps = 1;
 uint16_t acumm_dis;
-
+float dis;
 int main()
 {
+	
 		  //char buffer[100] = "$GPRMC,203559.00,A,4717.11437,N,00833.91522,E,0.004,77.52,091202,,,A*57";
 		  //char buffer[100] = "$GPRMC,203559.00,V,,,,,,,091202,,,V*57";
 	    //char buffer[100] = "$GPRMC,,V,,,,,,,,,,V*57";
-			char prev_location[] = "Loban";
+			char prev_location[] = "POOR";
 			float prev_distance_long =0;
 			float prev_distance_lat = 0;
-			acumm_dis=0;
+			uint8_t sigstatus;
+			acumm_dis=12366;
+	GPIO_Init_PortC_PC4();
 	SysTick_Init();
 init_LCD();
   
@@ -59,31 +62,40 @@ init_LCD();
 	UART5_vInit(); 
 	while(1)
 	{
-		kkk = 0;
 		UART_vReadString(UART5_ID, str, 100);   
 		
-	///////for debuging/////////////////////
-		while (kkk != 0)
-				{
-					kkk--;
-				}
-				UART_vWriteString(UART0_ID, str); 
+///////for debuging/////////////////////
+			UART_vWriteString(UART0_ID, str); 
 				UART_vWrite(UART0_ID, '\r');   
 				UART_vWrite(UART0_ID, '\n'); 				//UART_vWrite(UART0_ID, UART_u8Read(UART5_ID));
-				kkk = 0;
-				while (kkk != 0)
-				{
-					kkk--;
-				}
+		
+
 //////////////////////////////////////
 			GPS_Spreading_Data(str);
 		
-		if (strlen(GPS_time)==0& 0 ){
+		if (strlen(GPS_time)==0){
 				error_display();
+				GPIO_PORTC_DATA_R |= (1<<5);
+				sigstatus=0;
 			}
-		else if(GPS_status=='V'& 0){
+		else if(GPS_status=='V'){
 			init_display();
-					
+			if (sigstatus==0) {
+				GPIO_PORTC_DATA_R &= ~(1<<5);
+							DelayMs(500);
+				GPIO_PORTC_DATA_R |= (1<<5);
+				DelayMs(100);
+				GPIO_PORTC_DATA_R &= ~(1<<5);
+				DelayMs(100);
+				GPIO_PORTC_DATA_R |= (1<<5);
+				DelayMs(100);
+				GPIO_PORTC_DATA_R &= ~(1<<5);
+				DelayMs(100);
+				GPIO_PORTC_DATA_R |= (1<<5);
+				DelayMs(100);
+			}
+			GPIO_PORTC_DATA_R &= ~(1<<5);
+			sigstatus=1;
 			error_signal_display();
 
 			time_display();
@@ -92,14 +104,23 @@ init_LCD();
 			location_display(prev_location);
 			int_to_string(acumm_dis, ito_string);
 			distance_display(ito_string);
+			
 		}
-		else
+				else if(GPS_status=='A')
 		{
 			init_display();
+			if (sigstatus==1) {
+				GPIO_PORTC_DATA_R |= (1<<5);
+				DelayMs(500);
+			}
+			GPIO_PORTC_DATA_R &= ~(1<<5);
+			sigstatus=0;
 		//	distance__ = GPS_Calculate_Distance(31.2211061, 30.0515606,31.2789716, 30.0652933); 
 			time_display();
+						int_to_string(acumm_dis, ito_string);
+				distance_display(ito_string);
 					conn_signal_display();
-
+		
 			date_display();
 			speed_display(GPS_speed);
 			location_display(nearest_place(lon, lat));
@@ -114,18 +135,17 @@ init_LCD();
 			
 			if (count==0)
 			{
-				acumm_dis+=GPS_Calculate_Distance(lat, lon, prev_distance_long,prev_distance_lat );
-				int_to_string(acumm_dis, ito_string);
-				distance_display(ito_string);
+				dis = GPS_Calculate_Distance(lat, lon, prev_distance_long,prev_distance_lat );
+				if (dis > 6.0f)
+				acumm_dis+=dis;
+		
 				prev_distance_long = lat;
 				prev_distance_lat =	lon;
 				count=11;
-				// TODO: Reset Distance with Button
 			}
 			
 			count--;
 		}
-		// TODO: Display buzzer sound
 	}
 }
 
