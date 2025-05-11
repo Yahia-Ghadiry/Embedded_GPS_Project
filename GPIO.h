@@ -37,6 +37,9 @@ void GPIO_Init_PortF(void);
 //---------------------------------
 void GPIO_Init_PortA(void);
 
+//======== Port C =================
+void GPIO_Init_PortC_PC4(void);
+
 //======== Port D_LCD =================
 void GPIO_Init_PortD_LCD(void);
 
@@ -58,6 +61,8 @@ int  GPIO_DATA_READ(uint8_t PORT);
 void GPIO_DATA_SET(uint8_t PORT, uint8_t bit);
 void GPIO_DATA_SET(uint8_t PORT, uint8_t bit);
 void GPIO_DIR_SET(uint8_t PORT, uint8_t DIR);
+//------------------
+void GPIOPortC_Handler(void);
 
 
 
