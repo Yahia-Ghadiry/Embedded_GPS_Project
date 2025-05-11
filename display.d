@@ -6,3 +6,6 @@
 .\display.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h
 .\display.o: C:\Keil\ARM\ARMCC\bin\..\include\math.h
 .\display.o: LCD.h
+.\display.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+.\display.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+.\display.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h

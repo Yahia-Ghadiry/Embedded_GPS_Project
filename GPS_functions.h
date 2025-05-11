@@ -15,7 +15,7 @@ extern float   lat;            // Latitude (ddmm.mmmm)
 extern char    GPS_NS;         // 'N' or 'S'
 extern float   lon;            // Longitude (dddmm.mmmm)
 extern char    GPS_EW;         // 'E' or 'W'
-extern float   GPS_speed;      // Speed in knots
+extern char   GPS_speed[8];      // Speed in knots
 extern float   GPS_course;     // Course in degrees
 extern uint8_t GPS_date[7];    // DDMMYY
 extern uint8_t mv[6];          // Magnetic variation
@@ -30,6 +30,6 @@ float GPS_angle_formate_to_rad(float angle);
 float GPS_degree_to_radians(float degrees);
 float GPS_radians_to_degree(float radians);
 
-float GPS_Calculate_Distance(float lon, float lat, float lon_2, float lat_2);
+float GPS_Calculate_Distance(float currentLong, float currentLat, float destLong, float destLat) ;
 
 #endif

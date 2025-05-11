@@ -6,3 +6,6 @@
 .\gps_functions.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
 .\gps_functions.o: C:\Keil\ARM\ARMCC\bin\..\include\stdbool.h
 .\gps_functions.o: C:\Keil\ARM\ARMCC\bin\..\include\math.h
+.\gps_functions.o: Display.h
+.\gps_functions.o: Display.h
+.\gps_functions.o: LCD.h

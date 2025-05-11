@@ -3,13 +3,11 @@
 ".\main.o"
 ".\gps_functions.o"
 ".\display.o"
-".\interruptbtn.o"
 ".\lcd.o"
 ".\gpio.o"
 ".\systicfunctions.o"
 ".\uart.o"
-".\try uart.o"
---library_type=microlib --strict --scatter ".\project.sct"
+--library_type=microlib --strict --scatter "project.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\project.map" -o .\project.axf

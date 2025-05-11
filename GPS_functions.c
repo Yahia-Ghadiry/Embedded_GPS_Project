@@ -4,24 +4,50 @@
 #include "GPS_functions.h"
 #include <stdint.h>
 #include <math.h>  // For mathematical functions like sinf, cosf, sqrtf, etc.
-
+#include "Display.h"
 // Constants for GPS calculations
 #define PI 3.141592653589793
 #define R 6371.0f // Radius of Earth in kilometers
-#define MAX_FIELD_LEN 16
+#define MAX_FIELD_LEN 20
 char    GPS_time[11] = "";   // HHMMSS.ss
 char    GPS_status   = 'V';
 float   lat          = 0.0f;
 char    GPS_NS       = 'N';
 float   lon          = 0.0f;
 char    GPS_EW       = 'E';
-float   GPS_speed    = 0.0f;
+char   GPS_speed[8]    = "";
+float   GPS_speed_v =0;
 float   GPS_course   = 0.0f;
 uint8_t GPS_date[7]  = "";   // DDMMYY
 uint8_t mv[6]        = "";   // Magnetic variation
 char    mvEW        = ' ';
 char    posMode     = ' ';
+float ratof(char *arr)
+{
+  float val = 0;
+  int afterdot=0;
+  float scale=1;
+  int neg = 0; 
 
+  if (*arr == '-') {
+    arr++;
+    neg = 1;
+  }
+  while (*arr) {
+    if (afterdot) {
+      scale = scale/10;
+      val = val + (*arr-'0')*scale;
+    } else {
+      if (*arr == '.') 
+    afterdot++;
+      else
+    val = val * 10.0 + (*arr - '0');
+    }
+    arr++;
+  }
+  if(neg) return -val;
+  else    return  val;
+}
 void GPS_Spreading_Data(const char *gps_buffer) {
     /* 1. Declarations first (C90) */
     char        field[MAX_FIELD_LEN];
@@ -60,7 +86,7 @@ void GPS_Spreading_Data(const char *gps_buffer) {
                 break;
             case 2:
                 /* Latitude: ddmm.mmmm format */
-                lat = (float)atof(field);
+              lat = GPS_angle_format_to_degrees((float)ratof(field));
                 break;
             case 3:
                 /* North/South indicator */
@@ -68,7 +94,7 @@ void GPS_Spreading_Data(const char *gps_buffer) {
                 break;
             case 4:
                 /* Longitude: dddmm.mmmm format */
-                lon = (float)atof(field);
+              lon = GPS_angle_format_to_degrees((float)ratof(field));
                 break;
             case 5:
                 /* East/West indicator */
@@ -76,11 +102,12 @@ void GPS_Spreading_Data(const char *gps_buffer) {
                 break;
             case 6:
                 /* Speed over ground in knots */
-                GPS_speed = (float)atof(field);
+              GPS_speed_v = (float)ratof(field)*0.514444*18/5;
+						int_to_string ((int)GPS_speed_v, GPS_speed);
                 break;
             case 7:
                 /* Course over ground in degrees */
-                GPS_course = (float)atof(field);
+               GPS_course = (float)ratof(field);
                 break;
             case 8:
                 /* Date: DDMMYY */
@@ -120,7 +147,7 @@ float GPS_angle_format_to_degrees(float angle) {
 
 // Convert GPS angle in decimal degrees to radians
 float GPS_angle_formate_to_rad(float angle) {
-    return ((GPS_angle_format_to_degrees(angle) * PI) / 180.0f);  // Convert degrees to radians
+    return (((angle) * PI) / 180.0f);  // Convert degrees to radians
 }
 
 // Convert degrees to radians
@@ -134,23 +161,23 @@ float GPS_radians_to_degree(float radians) {
 }
 
 // Calculate the distance between two points (Haversine formula)
-float GPS_Calculate_Distance(float lon, float lat, float lon_2, float lat_2) {
-    float delta_lon, delta_lat, a, c;
+float GPS_Calculate_Distance(float currentLong, float currentLat, float destLong, float destLat) {
+    // Get Radian Angle
+    float currentLongRad = GPS_degree_to_radians(currentLong);
+    float currentLatRad  = GPS_degree_to_radians(currentLat);
+    float destLongRad    = GPS_degree_to_radians(destLong);
+    float destLatRad     = GPS_degree_to_radians(destLat);
 
-    lon  = GPS_angle_formate_to_rad(lon);
-    lat  = GPS_angle_formate_to_rad(lat);
-    lon_2 = GPS_angle_formate_to_rad(lon_2);
-    lat_2 = GPS_angle_formate_to_rad(lat_2);
+    // Get Difference
+    float longDiff = destLongRad - currentLongRad;
+    float latDiff  = destLatRad - currentLatRad;
 
-    delta_lon = fabs(lon - lon_2);
-    delta_lat = fabs(lat - lat_2);
+    // Calculate Distance
+    float a = pow(sin(latDiff / 2), 2) + cos(currentLatRad) * cos(destLatRad) * pow(sin(longDiff / 2), 2);  // Haversine formula
+    double c = 2 * atan2(sqrt(a), sqrt(1 - a));
+    return R*c*1000;
 
-    a = sinf(delta_lat / 2.0f) * sinf(delta_lat / 2.0f) +
-        cosf(lat) * cosf(lat_2) * sinf(delta_lon / 2.0f) * sinf(delta_lon / 2.0f);
-
-    c = 2.0f * atanf(sqrtf(a) / sqrtf(1.0f - a));
-
-    return R * c;  // Return distance in kilometers
 }
 
 // You can expand this function to calculate other values like bearing, etc.
+
