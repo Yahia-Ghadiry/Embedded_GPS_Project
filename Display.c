@@ -7,10 +7,15 @@
 #include <stdint.h>
 char distance[6];
 void time_display(){
+	int gps_time = 0;
 
 	position_curser(2,10);
-	display_char(GPS_time[0]);
-	display_char(GPS_time[1]);
+	
+	gps_time = ((GPS_time[0]-'0')*10 + (GPS_time[0]-'0') + 4) % 24;
+	display_char((gps_time / 10) + '0');
+	
+	display_char((gps_time % 10) + '0');
+	
 	display_char(':');
 	display_char(GPS_time[2]);
 	display_char(GPS_time[3]);
@@ -108,9 +113,9 @@ void distance_display(uint8_t * str){
 }
 void error_signal_display(void){
 			position_curser(2,19);
-	display_char('F');
+	display_char('P');
 }
 void conn_signal_display(void){
 			position_curser(2,19);
-	display_char('S');
+	display_char('G');
 }

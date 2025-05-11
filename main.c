@@ -45,7 +45,7 @@ uint16_t acumm_dis;
 
 int main()
 {
-		  char buffer[100] = "$GPRMC,203559.00,A,4717.11437,N,00833.91522,E,0.004,77.52,091202,,,A*57";
+		  //char buffer[100] = "$GPRMC,203559.00,A,4717.11437,N,00833.91522,E,0.004,77.52,091202,,,A*57";
 		  //char buffer[100] = "$GPRMC,203559.00,V,,,,,,,091202,,,V*57";
 	    //char buffer[100] = "$GPRMC,,V,,,,,,,,,,V*57";
 			char prev_location[] = "Loban";
@@ -97,11 +97,13 @@ init_LCD();
 		{
 			init_display();
 		//	distance__ = GPS_Calculate_Distance(31.2211061, 30.0515606,31.2789716, 30.0652933); 
-			location_display(nearest_place(lon, lat));
-			conn_signal_display();
 			time_display();
+					conn_signal_display();
+
 			date_display();
 			speed_display(GPS_speed);
+			location_display(nearest_place(lon, lat));
+				
 			
 			if (first_gps == 1)
 			{	
@@ -136,43 +138,43 @@ init_LCD();
  uint8_t* place_name(int index) {
 switch (index) {
     case 0:
-      return "hall a,b";
+      return "Hall A,B";
     case 1:
-      return "hall c,d";
+      return "Hall C,D";
     case 2:
     case 3:
     case 4:
-      return "arch building";
+      return "Arch building";
     case 5:
       return "mosque";
     case 6:
     case 7:
-      return "library";
+      return "Library";
     case 8:
-      return "tk3eba";
+      return "Tk3eba";
     case 9:
     case 10:
     case 11:
-      return "louban";
+      return "Louban";
     case 12:
     case 13:
     case 14:
     case 15:
-      return "mal3ab";
+      return "Mal3ab";
     case 16:
     case 17:
-      return "credit";
+      return "Credit";
     case 18:
     case 19:
     case 20:
-      return "wersh";
+      return "Wersh";
     case 21:
     case 22:
-      return "khrsana";
+      return "Khrsana";
     case 23:
-      return "nafora";
+      return "Nafora";
     case 24:
-      return "gate 2";
+      return "Gate 2";
     case 25:
     case 26:
     case 27:
@@ -185,7 +187,7 @@ switch (index) {
     case 34:
     case 35:
     case 36:
-      return "mainstream";
+      return "Mainstream";
     default:
       return "Unknown index";
   }
