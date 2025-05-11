@@ -41,7 +41,8 @@ uint8_t aaa = '0';
 char str[100];
 uint8_t count = 10;
 uint8_t first_gps = 1;
-int distance__;
+uint16_t acumm_dis;
+
 int main()
 {
 		  char buffer[100] = "$GPRMC,203559.00,A,4717.11437,N,00833.91522,E,0.004,77.52,091202,,,A*57";
@@ -50,7 +51,7 @@ int main()
 			char prev_location[] = "Loban";
 			float prev_distance_long =0;
 			float prev_distance_lat = 0;
-		uint16_t acumm_dis = 0;
+			acumm_dis=0;
 	SysTick_Init();
 init_LCD();
   

@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include "tm4c123gh6pm.h"
 #include "GPIO.h"
+//#include "core_cm4x.h"   // Adjust based on Cortex-M version
 
 
 //======== Port A =================
@@ -114,6 +115,10 @@ void GPIO_Init_PortC_PC4(void) {
     GPIO_PORTC_IM_R |= 0x10;                 // Unmask interrupt for PC4
 
     NVIC_EN0_R |= (1 << 2);                  // Enable IRQ for Port C (IRQ#2)
+		enableGlobalInterrupts();
+}
+void enableGlobalInterrupts(void) {
+    __enable_irq();  // Enables all maskable interrupts
 }
 
 
@@ -188,7 +193,7 @@ void delay(long int period) {
 void GPIOPortC_Handler(void) {
     if (GPIO_PORTC_MIS_R & 0x10) {
         GPIO_PORTC_ICR_R = 0x10;   // Clear the interrupt
-        
+        acumm_dis = 0;
     }
 }
 

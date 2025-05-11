@@ -22,6 +22,7 @@ extern uint8_t mv[6];          // Magnetic variation
 extern char    mvEW;           // 'E' or 'W'
 extern char    posMode;        // Position mode (A/D)
 
+
 void GPS_Spreading_Data(const char *gps_buffer);
 
 float GPS_angle_format_to_degrees(float angle);

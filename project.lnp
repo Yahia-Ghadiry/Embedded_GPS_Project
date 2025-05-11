@@ -3,6 +3,8 @@
 ".\main.o"
 ".\gps_functions.o"
 ".\display.o"
+".\interruptbtn.o"
+".\interruptbtn.o"
 ".\lcd.o"
 ".\gpio.o"
 ".\systicfunctions.o"

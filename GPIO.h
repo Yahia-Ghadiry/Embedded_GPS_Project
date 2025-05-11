@@ -24,6 +24,9 @@
 #define CLR_BIT(reg,bit)	reg &= ~(1<<bit)
 #define GET_BIT(reg,bit)	((reg>>bit)&0x01)
 
+//distance Accum
+extern uint16_t acumm_dis;
+
 // Function Prototype
 
 //======== Port A =================
@@ -54,7 +57,7 @@ void GPIO_LED_ALL_ON(void);
 void GPIO_LED_ALL_OFF(void);
 //-----------Init---------------------
 void GPIO_Init_A_B_F(void);
-
+void enableGlobalInterrupts(void);
 //=============== Functions ===============================
 void GPIO_DATA_WRITE(uint8_t PORT, uint8_t VALUE);
 int  GPIO_DATA_READ(uint8_t PORT);
