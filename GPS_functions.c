@@ -8,6 +8,8 @@
 #define PI 3.141592653589793
 #define R 6371.0f // Radius of Earth in kilometers
 #define MAX_FIELD_LEN 20
+
+// GPS data variables
 char    GPS_time[11] = "";   
 char    GPS_status   = 'V';
 float   lat          = 0.0f;
@@ -21,6 +23,8 @@ uint8_t GPS_date[7]  = "";
 uint8_t mv[6]        = "";   // Magnetic variation
 char    mvEW        = ' ';
 char    posMode     = ' ';
+
+// Convert string representation of a floating-point number to float
 float ratof(char *arr)
 {
   float val = 0;
@@ -28,7 +32,7 @@ float ratof(char *arr)
   float scale=1;
   int neg = 0; 
 
-  if (*arr == '-') {
+  if (*arr == '-') { // Check for negative sign
     arr++;
     neg = 1;
   }
@@ -47,12 +51,15 @@ float ratof(char *arr)
   if(neg) return -val;
   else    return  val;
 }
+
+// Parse GPS buffer and extract relevant data
 void GPS_Spreading_Data(const char *gps_buffer) {
     char        field[MAX_FIELD_LEN];
     const char *p;
     uint8_t     idx;
     uint8_t     len;
 
+		// Ensure the buffer contains a valid $GPRMC sentence
     if (gps_buffer == NULL || strncmp(gps_buffer, "$GPRMC,", 7) != 0) {
         return;
     }
@@ -67,6 +74,7 @@ void GPS_Spreading_Data(const char *gps_buffer) {
         }
         field[len] = '\0';  
         
+				// Assign extracted data based on field index
         switch (idx) {
             case 0:
                 strncpy(GPS_time, field, sizeof(GPS_time) - 1);
@@ -150,9 +158,10 @@ float GPS_Calculate_Distance(float currentLong, float currentLat, float destLong
     float longDiff = destLongRad - currentLongRad;
     float latDiff  = destLatRad - currentLatRad;
 
+		// Haversine formula for distance calculation
     float a = pow(sin(latDiff / 2), 2) + cos(currentLatRad) * cos(destLatRad) * pow(sin(longDiff / 2), 2);  // Haversine formula
     double c = 2 * atan2(sqrt(a), sqrt(1 - a));
-    return R*c*1000;
+    return R*c*1000; // Convert distance from kilometers to meters
 
 }
 

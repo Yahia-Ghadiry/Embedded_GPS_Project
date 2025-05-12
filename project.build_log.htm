@@ -3,8 +3,8 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
-D:\Empeddedlap\project\empedde\Embedded_GPS_Project\project.uvproj
-Project File Date:  05/11/2025
+C:\Users\anase\OneDrive\Desktop\imp\Embedded_GPS_Project\project.uvproj
+Project File Date:  05/12/2025
 
 <h2>Output:</h2>
 Rebuild target 'Target 1'
@@ -20,19 +20,19 @@ main.c(125): warning:  #167-D: argument of type "char *" is incompatible with pa
                         speed_display(GPS_speed);
 main.c: 4 warnings, 0 errors
 compiling GPS_functions.c...
-GPS_functions.c(9): warning:  #47-D: incompatible redefinition of macro "PI" (declared at line 9 of "GPS_functions.h")
+GPS_functions.c(8): warning:  #47-D: incompatible redefinition of macro "PI" (declared at line 9 of "GPS_functions.h")
   #define PI 3.141592653589793
-GPS_functions.c(10): warning:  #47-D: incompatible redefinition of macro "R" (declared at line 10 of "GPS_functions.h")
+GPS_functions.c(9): warning:  #47-D: incompatible redefinition of macro "R" (declared at line 10 of "GPS_functions.h")
   #define R 6371.0f // Radius of Earth in kilometers
-GPS_functions.c(44): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+GPS_functions.c(47): warning:  #1035-D: single-precision operand implicitly converted to double-precision
       val = val * 10.0 + (*arr - '0');
-GPS_functions.c(105): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+GPS_functions.c(99): warning:  #1035-D: single-precision operand implicitly converted to double-precision
                 GPS_speed_v = (float)ratof(field)*0.514444*18/5;
-GPS_functions.c(150): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      return (((angle) * PI) / 180.0f);  // Convert degrees to radians
-GPS_functions.c(155): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+GPS_functions.c(138): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      return (((angle) * PI) / 180.0f);  
+GPS_functions.c(143): warning:  #1035-D: single-precision operand implicitly converted to double-precision
       return ((degrees * PI) / 180.0f);
-GPS_functions.c(160): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+GPS_functions.c(148): warning:  #1035-D: single-precision operand implicitly converted to double-precision
       return ((radians * 180.0f) / PI);
 GPS_functions.c: 7 warnings, 0 errors
 compiling Display.c...
@@ -43,86 +43,11 @@ compiling LCD.c...
 compiling GPIO.c...
 compiling systicFunctions.c...
 compiling uart.c...
-uart.c(133): warning:  #940-D: missing return statement at end of non-void function "UART_u8Read"
+uart.c(103): warning:  #940-D: missing return statement at end of non-void function "UART_u8Read"
   }
-uart.c(177): warning:  #1-D: last line of file ends without a newline
+uart.c(147): warning:  #1-D: last line of file ends without a newline
                         
 uart.c: 2 warnings, 0 errors
 linking...
 Program Size: Code=15660 RO-data=1844 RW-data=68 ZI-data=724  
 ".\project.axf" - 0 Error(s), 14 Warning(s).
-Load "D:\\Empeddedlap\\project\\empedde\\Embedded_GPS_Project\\project.axf" 
-Connecting: Mode=JTAG, Speed=1000000Hz
-Erase Done.
-Programming Done.
-Verify OK.
-</pre>
-</body>
-</html>
-ject\\empedde\\Embedded_GPS_Project\\project.axf" 
-Connecting: Mode=JTAG, Speed=1000000Hz
-Erase Done.
-Programming Done.
-Verify OK.
-grees to radians
-GPS_functions.c(155): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      return ((degrees * PI) / 180.0f);
-GPS_functions.c(160): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      return ((radians * 180.0f) / PI);
-GPS_functions.c: 7 warnings, 0 errors
-compiling Display.c...
-Display.c(122): warning:  #1-D: last line of file ends without a newline
-  }
-Display.c: 1 warning, 0 errors
-compiling LCD.c...
-compiling GPIO.c...
-compiling systicFunctions.c...
-compiling uart.c...
-uart.c(133): warning:  #940-D: missing return statement at end of non-void function "UART_u8Read"
-  }
-uart.c(177): warning:  #1-D: last line of file ends without a newline
-                        
-uart.c: 2 warnings, 0 errors
-".\project.axf" - 9 Error(s), 20 Warning(s).
-Target not created
-se 34:
-main.c(204): error:  #121: a case label may only be used within a switch
-      case 35:
-main.c(205): error:  #121: a case label may only be used within a switch
-      case 36:
-main.c(206): error:  #120: return value type does not match the function type
-        return "Mainstream";
-main.c(207): error:  #122: a default label may only be used within a switch
-      default:
-main.c: 9 warnings, 30 errors
-compiling GPS_functions.c...
-GPS_functions.c(9): warning:  #47-D: incompatible redefinition of macro "PI" (declared at line 9 of "GPS_functions.h")
-  #define PI 3.141592653589793
-GPS_functions.c(10): warning:  #47-D: incompatible redefinition of macro "R" (declared at line 10 of "GPS_functions.h")
-  #define R 6371.0f // Radius of Earth in kilometers
-GPS_functions.c(44): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      val = val * 10.0 + (*arr - '0');
-GPS_functions.c(105): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-                GPS_speed_v = (float)ratof(field)*0.514444*18/5;
-GPS_functions.c(150): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      return (((angle) * PI) / 180.0f);  // Convert degrees to radians
-GPS_functions.c(155): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      return ((degrees * PI) / 180.0f);
-GPS_functions.c(160): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-      return ((radians * 180.0f) / PI);
-GPS_functions.c: 7 warnings, 0 errors
-compiling Display.c...
-Display.c(122): warning:  #1-D: last line of file ends without a newline
-  }
-Display.c: 1 warning, 0 errors
-compiling LCD.c...
-compiling GPIO.c...
-compiling systicFunctions.c...
-compiling uart.c...
-uart.c(133): warning:  #940-D: missing return statement at end of non-void function "UART_u8Read"
-  }
-uart.c(177): warning:  #1-D: last line of file ends without a newline
-                        
-uart.c: 2 warnings, 0 errors
-".\project.axf" - 30 Error(s), 19 Warning(s).
-Target not created

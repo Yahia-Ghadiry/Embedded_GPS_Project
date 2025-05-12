@@ -23,14 +23,22 @@ extern char    mvEW;
 extern char    posMode;        
 
 
+// Function to parse GPS data from an input buffer
 void GPS_Spreading_Data(const char *gps_buffer);
 
+// Convert latitude/longitude from ddmm.mmmmm format to decimal degrees
 float GPS_angle_format_to_degrees(float angle);
+
+// Convert GPS angle from degrees to radians
 float GPS_angle_formate_to_rad(float angle);
 
+// Convert degrees to radians
 float GPS_degree_to_radians(float degrees);
+
+// Convert radians to degrees
 float GPS_radians_to_degree(float radians);
 
-float GPS_Calculate_Distance(float currentLong, float currentLat, float destLong, float destLat) ;
+// Calculate the distance between two GPS coordinates using the Haversine formula
+float GPS_Calculate_Distance(float currentLong, float currentLat, float destLong, float destLat);
 
-#endif
+#endif  // End of GPS_FUNCTIONS_H
