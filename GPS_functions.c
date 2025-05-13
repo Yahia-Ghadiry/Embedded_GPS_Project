@@ -78,10 +78,10 @@ void GPS_Spreading_Data(const char *gps_buffer) {
         switch (idx) {
             case 0:
                 strncpy(GPS_time, field, sizeof(GPS_time) - 1);
-                GPS_time[sizeof(GPS_time) - 1] = '\0';
+                GPS_time[sizeof(GPS_time) - 1] = '\0'; // git time
                 break;
             case 1:
-                GPS_status = field[0];
+                GPS_status = field[0]; // statuse
                 break;
             case 2:
               lat = GPS_angle_format_to_degrees((float)ratof(field));
@@ -107,7 +107,7 @@ void GPS_Spreading_Data(const char *gps_buffer) {
                 GPS_date[sizeof(GPS_date) - 1] = '\0';
                 break;
             case 9:
-                strncpy((char*)mv, field, sizeof(mv) - 1);
+                strncpy((char*)mv, field, sizeof(mv) - 1); 
                 mv[sizeof(mv) - 1] = '\0';
                 break;
             case 10:
