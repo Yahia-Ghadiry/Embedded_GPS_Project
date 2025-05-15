@@ -1,0 +1,12 @@
+*.o
+*.d
+*.crf
+*.bak
+*.uvgui.*
+RTE
+*.htm
+*.axf
+*.dep
+*.clinic
+*.lst
+*.iex
